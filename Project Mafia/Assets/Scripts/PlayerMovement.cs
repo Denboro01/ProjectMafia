@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,21 +7,16 @@ public class PlayerMovement : MonoBehaviour
     private float verticalInput;
 
     [SerializeField]
-    private float movementSpeed;
+    private float movementSpeed = 275f;
 
     public Rigidbody2D rb;
 
     private Vector2 movement;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
+        // Updates the variables when player gives input
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
@@ -32,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Applies movement
         rb.velocity = movement * movementSpeed * Time.fixedDeltaTime;
     }
 }
