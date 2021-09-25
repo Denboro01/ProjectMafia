@@ -21,11 +21,20 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         movement = new Vector2(horizontalInput, verticalInput).normalized;
+
+        Rotate();
     }
 
     private void FixedUpdate()
     {
         // Applies movement
         rb.velocity = movement * movementSpeed * Time.fixedDeltaTime;
+    }
+
+    private void Rotate()
+    {
+        float lookAngle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
+
+        rb.rotation = lookAngle;
     }
 }
