@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 movement;
 
+    private float finalAngle;
+
     // Update is called once per frame
     void Update()
     {
@@ -21,8 +23,13 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         movement = new Vector2(horizontalInput, verticalInput).normalized;
+        if (horizontalInput != 0 || verticalInput != 0)
+        {
+            Rotate();
+        }
 
-        Rotate();
+        rb.rotation = finalAngle;
+
     }
 
     private void FixedUpdate()
@@ -44,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
         {
             lookAngle = 180;
         }
+
+        finalAngle = lookAngle;
 
         rb.rotation = lookAngle;
     }
