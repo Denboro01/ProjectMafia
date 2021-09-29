@@ -6,10 +6,12 @@ public class PlayerState : MonoBehaviour
 
     public GameObject attackPoint;
 
+    public PickUpItem pickUpItem;
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (pickUpItem.hasGun == true)
         {
             //Setting to Fire state
             attackPoint.SetActive(false);
