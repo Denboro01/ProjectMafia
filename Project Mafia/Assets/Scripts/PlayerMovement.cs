@@ -35,6 +35,16 @@ public class PlayerMovement : MonoBehaviour
     {
         float lookAngle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
 
+        if (lookAngle == 45 || lookAngle == -45)
+        {
+            lookAngle = 0;
+        }
+
+        if (lookAngle == 135 || lookAngle == -135)
+        {
+            lookAngle = 180;
+        }
+
         rb.rotation = lookAngle;
     }
 }
