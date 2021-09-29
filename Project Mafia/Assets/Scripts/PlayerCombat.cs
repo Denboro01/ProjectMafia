@@ -27,6 +27,10 @@ public class PlayerCombat : MonoBehaviour
 
         foreach(Collider2D enemy in hitEnemies)
         {
+            Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
+            Vector2 difference = enemy.transform.position - this.transform.position;
+            enemyRB.AddForce(difference * 2f, ForceMode2D.Impulse);
+
             Debug.Log("We hit " + enemy.name);
         }
     }
@@ -37,6 +41,7 @@ public class PlayerCombat : MonoBehaviour
         {
             return;
         }
+
         Gizmos.DrawWireSphere(attackPoint.transform.position, attackRange);
     }
 }
