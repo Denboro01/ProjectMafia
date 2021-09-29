@@ -45,9 +45,7 @@ public class PlayerMovement : MonoBehaviour
         if (lookAngle == 45 || lookAngle == -45)
         {
             lookAngle = 0;
-        }
-
-        if (lookAngle == 135 || lookAngle == -135)
+        } else if (lookAngle == 135 || lookAngle == -135)
         {
             lookAngle = 180;
         }
