@@ -6,12 +6,12 @@ public class PlayerShoot : MonoBehaviour
 {
     public GameObject bulletPrefab;
 
-    public Transform firePoint;
+    public GameObject firePoint;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetKeyDown(KeyCode.Space) && firePoint.activeSelf == true)
         {
             Shoot();
         }
@@ -19,6 +19,6 @@ public class PlayerShoot : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
     }
 }
