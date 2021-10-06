@@ -5,8 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private int health = 100;
+    public int currentAmmo;
+    private float currentFireRate;
+    private Vector2 movement;
+    [SerializeField]
+    private float movementSpeed = 200f;
 
-    #region Initialize State Machine
+    private Rigidbody2D rb;
+
     public enum PlayerState
     {
         idle,
@@ -17,15 +23,6 @@ public class PlayerController : MonoBehaviour
     }
 
     public PlayerState state;
-    #endregion
-
-    private Vector2 movement;
-    [SerializeField]
-    private float movementSpeed = 200f;
-
-    private Rigidbody2D rb;
-
-    public int currentAmmo;
 
     // Start is called before the first frame update
     void Start()
@@ -36,15 +33,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Initialize player input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
-
         movement = new Vector2(horizontalInput, verticalInput).normalized;
 
+        #region State Machine
         switch (state)
         {
+            #region Idle State
             case PlayerState.idle:
-                // Manage states
+                // Play idle animation
+
+                // Manage state
                 if (horizontalInput != 0 || verticalInput != 0)
                 {
                     state = PlayerState.move;
@@ -53,9 +54,13 @@ public class PlayerController : MonoBehaviour
                     state = PlayerState.attack;
                 }
                 break;
+            #endregion
 
+            #region Move State
             case PlayerState.move:
-                // Manage states
+                // Play movement animation
+
+                // Manage state
                 if (horizontalInput == 0 && verticalInput == 0)
                 {
                     state = PlayerState.idle;
@@ -64,29 +69,48 @@ public class PlayerController : MonoBehaviour
                     state = PlayerState.attack;
                 }
                 break;
+            #endregion
 
+            #region Attack State
             case PlayerState.attack:
-                if (currentAmmo <= 0)
+                if (currentAmmo > 0 && currentFireRate <= 0)
                 {
-                    // Shoots
-                } else
+                    // Fire animation
+
+                    // Fire
+
+                    currentAmmo--;
+
+                    // Manage state
+                    state = PlayerState.idle;
+                } else if (currentAmmo <= 0)
                 {
-                    // Combat
+                    // Punch animation
+
+                    // punch
+
+                    // Manage state
+                    state = PlayerState.idle;
                 }
                 break;
+            #endregion
 
+            #region Hurt State
             case PlayerState.hurt:
+                // Play hurt animation
 
+                // Manage state
+                state = PlayerState.idle;
                 break;
+            #endregion
 
+            #region Death State
             case PlayerState.death:
                 Destroy(gameObject);
                 break;
+            #endregion
         }
-
-        Debug.Log(state);
-        
-        // Check if player should be dead
+        #endregion
 
         if (health <= 0 && state != PlayerState.death)
         {
@@ -96,21 +120,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
-    }
-
-    private void MovePlayer()
-    {
-        rb.velocity = movement * movementSpeed * Time.deltaTime;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy" && state == PlayerState.attack)
-        {
-            Vector3 knockBack = (collision.transform.position - transform.position).normalized;
-
-            collision.transform.position += knockBack;
-        }
+        rb.velocity = movement * movementSpeed * Time.fixedDeltaTime;
     }
 }
