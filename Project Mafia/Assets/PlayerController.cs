@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour
     private int health = 100;
     public int currentAmmo;
     private float currentFireRate;
+    private float weaponFireRate;
     private Vector2 movement;
-    [SerializeField]
     private float movementSpeed = 200f;
 
     private Rigidbody2D rb;
@@ -37,6 +37,13 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
         movement = new Vector2(horizontalInput, verticalInput).normalized;
+
+        if (currentFireRate > 0)
+        {
+            currentFireRate -= Time.deltaTime;
+        }
+
+        Debug.Log(currentFireRate);
 
         #region State Machine
         switch (state)
@@ -80,6 +87,7 @@ public class PlayerController : MonoBehaviour
                     // Fire
 
                     currentAmmo--;
+                    currentFireRate = weaponFireRate;
 
                     // Manage state
                     state = PlayerState.idle;
@@ -90,6 +98,9 @@ public class PlayerController : MonoBehaviour
                     // punch
 
                     // Manage state
+                    state = PlayerState.idle;
+                } else
+                {
                     state = PlayerState.idle;
                 }
                 break;
@@ -121,5 +132,14 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = movement * movementSpeed * Time.fixedDeltaTime;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Item" && Input.GetKey(KeyCode.E)) {
+            currentAmmo = collision.GetComponent<WeaponStats>().weaponAmmo;
+            weaponFireRate = collision.GetComponent<WeaponStats>().fireRate;
+            Destroy(collision.gameObject);
+        }
     }
 }

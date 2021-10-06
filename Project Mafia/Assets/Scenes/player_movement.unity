@@ -477,6 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponAmmo: 10
+  fireRate: 0.5
 --- !u!1 &1211231053
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,9 +593,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663a5ac26498c8c48bdb27c94ffec799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
-  movementSpeed: 200
   currentAmmo: 0
+  state: 0
 --- !u!61 &1573544837
 BoxCollider2D:
   m_ObjectHideFlags: 0
