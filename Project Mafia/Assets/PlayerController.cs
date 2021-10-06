@@ -43,23 +43,6 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxisRaw("Vertical");
         movement = new Vector2(horizontalInput, verticalInput).normalized;
 
-        float bulletAngle = Mathf.Atan2(lastY, lastX) * Mathf.Rad2Deg;
-
-        if (bulletAngle == 45 || bulletAngle == -45)
-        {
-            bulletAngle = 0;
-            lastY = 0;
-        } else if (bulletAngle == 135 || bulletAngle == -135)
-        {
-            bulletAngle = 180;
-            lastY = 0;
-        }
-
-        float bulletPositionX = 1 * lastX;
-        float bulletPositionY = 1 * lastY;
-
-        bulletSpawnOffset = new Vector3(bulletPositionX, bulletPositionY);
-
         if (currentFireRate > 0)
         {
             currentFireRate -= Time.deltaTime;
@@ -109,6 +92,24 @@ public class PlayerController : MonoBehaviour
                     // Fire animation
 
                     // Fire
+                    float bulletAngle = Mathf.Atan2(lastY, lastX) * Mathf.Rad2Deg;
+
+                    if (bulletAngle == 45 || bulletAngle == -45)
+                    {
+                        bulletAngle = 0;
+                        lastY = 0;
+                    }
+                    else if (bulletAngle == 135 || bulletAngle == -135)
+                    {
+                        bulletAngle = 180;
+                        lastY = 0;
+                    }
+
+                    float bulletPositionX = 1.5f * lastX;
+                    float bulletPositionY = 1.5f * lastY;
+
+                    bulletSpawnOffset = new Vector3(bulletPositionX, bulletPositionY);
+
                     Instantiate(bulletPrefab, transform.position + bulletSpawnOffset, Quaternion.Euler(new Vector3 (0, 0, bulletAngle)));
 
                     currentAmmo--;
@@ -161,7 +162,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Item" && Input.GetKey(KeyCode.E)) {
+        if (collision.gameObject.tag == "Weapon" && Input.GetKey(KeyCode.E)) {
             currentAmmo = collision.GetComponent<WeaponStats>().weaponAmmo;
             weaponFireRate = collision.GetComponent<WeaponStats>().fireRate;
             Destroy(collision.gameObject);
