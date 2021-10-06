@@ -11,8 +11,7 @@ public class PlayerController : MonoBehaviour
     {
         idle,
         move,
-        fight,
-        shoot,
+        attack,
         hurt,
         death
     }
@@ -20,14 +19,13 @@ public class PlayerController : MonoBehaviour
     public PlayerState state;
     #endregion
 
-    private float horizontalInput;
-    private float verticalInput;
-
     private Vector2 movement;
     [SerializeField]
     private float movementSpeed = 200f;
 
     private Rigidbody2D rb;
+
+    public int currentAmmo;
 
     // Start is called before the first frame update
     void Start()
@@ -38,27 +36,43 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");
 
         movement = new Vector2(horizontalInput, verticalInput).normalized;
 
         switch (state)
         {
             case PlayerState.idle:
-
+                // Manage states
+                if (horizontalInput != 0 || verticalInput != 0)
+                {
+                    state = PlayerState.move;
+                } else if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    state = PlayerState.attack;
+                }
                 break;
 
             case PlayerState.move:
-
+                // Manage states
+                if (horizontalInput == 0 && verticalInput == 0)
+                {
+                    state = PlayerState.idle;
+                } else if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    state = PlayerState.attack;
+                }
                 break;
 
-            case PlayerState.fight:
-
-                break;
-
-            case PlayerState.shoot:
-
+            case PlayerState.attack:
+                if (currentAmmo <= 0)
+                {
+                    // Shoots
+                } else
+                {
+                    // Combat
+                }
                 break;
 
             case PlayerState.hurt:
@@ -69,7 +83,8 @@ public class PlayerController : MonoBehaviour
                 Destroy(gameObject);
                 break;
         }
-     
+
+        Debug.Log(state);
         
         // Check if player should be dead
 
@@ -87,5 +102,15 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         rb.velocity = movement * movementSpeed * Time.deltaTime;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy" && state == PlayerState.attack)
+        {
+            Vector3 knockBack = (collision.transform.position - transform.position).normalized;
+
+            collision.transform.position += knockBack;
+        }
     }
 }
