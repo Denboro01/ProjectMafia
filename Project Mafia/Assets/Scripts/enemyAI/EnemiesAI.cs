@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyAI : MonoBehaviour
+public class EnemiesAI : MonoBehaviour
 {
     public GameObject player;
     public Transform enemyFirePoint;
@@ -10,21 +10,23 @@ public class enemyAI : MonoBehaviour
     public playerDetector playerDetector;
     public bool startPathing;
 
-    [SerializeField] private enemyMovement enemyMovement;
+    [SerializeField] private EnemyMovement enemyMovement;
     [SerializeField] private GameObject enemyBullet;
+    [SerializeField] private LayerMask wallLayerMask;
 
     private bool fireCooldown;
     private float timer;
     private float forgetPlayerTimer;
-    private LayerMask wallLayerMask;
     private bool playerSeen;
+    private Rigidbody2D rb;
 
     void Start()
     {
         timer = 2;
         wallLayerMask = LayerMask.GetMask("Default");
 
-        enemyMovement = GetComponent<enemyMovement>();
+        enemyMovement = GetComponent<EnemyMovement>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
@@ -36,7 +38,7 @@ public class enemyAI : MonoBehaviour
 
         Timer();
 
-        if (playerSeen && forgetPlayerTimer < 3)
+        if (playerSeen && forgetPlayerTimer <= 1)
         {
             lastPlayerPosition = player.transform.position;
             startPathing = true;
@@ -46,7 +48,7 @@ public class enemyAI : MonoBehaviour
 
     private void visibilityCheck()
     {
-        
+
 
         RaycastHit2D hit = Physics2D.Linecast(transform.position, player.transform.position, wallLayerMask);
         if (hit.collider == null)
@@ -55,11 +57,15 @@ public class enemyAI : MonoBehaviour
             playerSeen = true;
             startPathing = false;
             forgetPlayerTimer = 4;
+            
+            enemyMovement.isChasing = true;
+
+            rb.velocity = Vector3.zero;
 
             Firing();
-            
+
         }
-        
+
     }
 
     private void Timer()
@@ -74,7 +80,7 @@ public class enemyAI : MonoBehaviour
             if (timer <= 0)
             {
                 fireCooldown = true;
-                timer = 2;
+                timer = 1;
             }
         }
 
@@ -82,7 +88,8 @@ public class enemyAI : MonoBehaviour
         if (forgetPlayerTimer > 0)
         {
             forgetPlayerTimer -= Time.deltaTime;
-        } else
+        }
+        else
         {
             playerSeen = false;
         }
