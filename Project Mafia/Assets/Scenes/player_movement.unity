@@ -594,6 +594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAmmo: 0
+  bulletPrefab: {fileID: 4418770221078128605, guid: 7840645e8cf9c824d9d951d4973b3503, type: 3}
   state: 0
 --- !u!61 &1573544837
 BoxCollider2D:

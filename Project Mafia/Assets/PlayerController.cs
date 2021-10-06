@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -11,7 +9,14 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private float movementSpeed = 200f;
 
+    private Vector3 bulletSpawnOffset;
+
+    private float lastX;
+    private float lastY;
+
     private Rigidbody2D rb;
+
+    public GameObject bulletPrefab;
 
     public enum PlayerState
     {
@@ -38,12 +43,27 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxisRaw("Vertical");
         movement = new Vector2(horizontalInput, verticalInput).normalized;
 
+        float bulletAngle = Mathf.Atan2(lastY, lastX) * Mathf.Rad2Deg;
+
+        if (bulletAngle == 45 || bulletAngle == -45)
+        {
+            bulletAngle = 0;
+            lastY = 0;
+        } else if (bulletAngle == 135 || bulletAngle == -135)
+        {
+            bulletAngle = 180;
+            lastY = 0;
+        }
+
+        float bulletPositionX = 1 * lastX;
+        float bulletPositionY = 1 * lastY;
+
+        bulletSpawnOffset = new Vector3(bulletPositionX, bulletPositionY);
+
         if (currentFireRate > 0)
         {
             currentFireRate -= Time.deltaTime;
         }
-
-        Debug.Log(currentFireRate);
 
         #region State Machine
         switch (state)
@@ -74,6 +94,10 @@ public class PlayerController : MonoBehaviour
                 } else if (Input.GetKeyDown(KeyCode.Space))
                 {
                     state = PlayerState.attack;
+                } else
+                {
+                    lastX = horizontalInput;
+                    lastY = verticalInput;
                 }
                 break;
             #endregion
@@ -85,6 +109,7 @@ public class PlayerController : MonoBehaviour
                     // Fire animation
 
                     // Fire
+                    Instantiate(bulletPrefab, transform.position + bulletSpawnOffset, Quaternion.Euler(new Vector3 (0, 0, bulletAngle)));
 
                     currentAmmo--;
                     currentFireRate = weaponFireRate;
