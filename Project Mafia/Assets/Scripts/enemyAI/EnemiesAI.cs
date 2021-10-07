@@ -9,6 +9,7 @@ public class EnemiesAI : MonoBehaviour
     public Vector3 lastPlayerPosition;
     public playerDetector playerDetector;
     public bool startPathing;
+    public bool playerSeen;
 
     [SerializeField] private EnemyMovement enemyMovement;
     [SerializeField] private GameObject enemyBullet;
@@ -17,7 +18,6 @@ public class EnemiesAI : MonoBehaviour
     private bool fireCooldown;
     private float timer;
     private float forgetPlayerTimer;
-    private bool playerSeen;
     private Rigidbody2D rb;
 
     void Start()
@@ -42,6 +42,7 @@ public class EnemiesAI : MonoBehaviour
         {
             lastPlayerPosition = player.transform.position;
             startPathing = true;
+            playerSeen = false;
         }
     }
 
@@ -56,12 +57,7 @@ public class EnemiesAI : MonoBehaviour
 
             playerSeen = true;
             startPathing = false;
-            forgetPlayerTimer = 4;
-            
-            enemyMovement.isChasing = true;
-
-            rb.velocity = Vector3.zero;
-
+            forgetPlayerTimer = 2;
             Firing();
 
         }
@@ -97,6 +93,7 @@ public class EnemiesAI : MonoBehaviour
 
     private void Firing()
     {
+
         if (fireCooldown)
         {
             Instantiate(enemyBullet, enemyFirePoint.position, enemyFirePoint.rotation);

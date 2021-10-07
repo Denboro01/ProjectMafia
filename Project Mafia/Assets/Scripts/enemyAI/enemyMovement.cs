@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
 {
 
     public Transform target;
+    public Path path;
 
     public bool willLookAround;
     public bool isChasing;
@@ -22,8 +23,8 @@ public class EnemyMovement : MonoBehaviour
     
     private bool rotationHasReset;
     private Vector2 direction;
+    private Vector2 rotation;
     private Vector2 force;
-    private Path path;
     private Seeker seeker;
     private Rigidbody2D rb;
 
@@ -52,6 +53,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+
 
         if (willLookAround)
         {
@@ -86,38 +88,67 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
-        direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position);
-        force = enemySpeed * Time.deltaTime * direction;
-
-        LookForPlayer();
-
-        rb.AddForce(force);
-
-
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-
-        if (distance < nextWaypointDistance)
+        if (enemyAI.playerSeen)
         {
-            currentWaypoint++;
+            path = null;
         }
 
-        if (currentWaypoint >= path.vectorPath.Count)
+        if (path != null)
         {
-            isChasing = false;
-            enemyAI.startPathing = false;
+            direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position);
+            rotation = direction;
+            force = enemySpeed * Time.deltaTime * direction;
+
+            LookForPlayer();
+
+            rb.velocity = force;
+
+
+            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+
+            if (distance < nextWaypointDistance)
+            {
+                currentWaypoint++;
+            }
+
+            if (currentWaypoint >= path.vectorPath.Count)
+            {
+                isChasing = false;
+                enemyAI.startPathing = false;
+            }
         }
 
     }
 
+    
     private void LookForPlayer()
     {
-        Debug.Log(direction);
+        /*
         Vector3 tempDirection = new Vector3(force.x * enemySpeed, force.y * enemySpeed);
         Vector3 dir = tempDirection - transform.position;
 
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        */
+        if (rotation.x > 0 && rotation.x > rotation.y)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        if (rotation.y > 0 && rotation.y > rotation.x)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+        if (rotation.x < 0 && rotation.x < rotation.y)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 180);
+        }
+        if (rotation.y < 0 && rotation.y < rotation.x)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 270);
+        }
+
+
     }
 
 
