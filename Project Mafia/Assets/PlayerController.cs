@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
                     // Punch animation
 
                     // punch
-
+                    
                     // Manage state
                     state = PlayerState.idle;
                 } else
@@ -166,6 +166,14 @@ public class PlayerController : MonoBehaviour
             currentAmmo = collision.GetComponent<WeaponStats>().weaponAmmo;
             weaponFireRate = collision.GetComponent<WeaponStats>().fireRate;
             Destroy(collision.gameObject);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy" && state == PlayerState.attack)
+        {
+            Debug.Log("Hoi");
         }
     }
 }
