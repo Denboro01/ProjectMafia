@@ -7,12 +7,6 @@ public class PunchPoint : MonoBehaviour
     public Transform player;
     public Vector3 offset;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -21,18 +15,28 @@ public class PunchPoint : MonoBehaviour
 
         if (horizontalInput == 1 && verticalInput == 0)
         {
-            offset = new Vector3(1, 0, 0);
+            offset = new Vector3(.5f, 0, 0);
         }  else if (horizontalInput == 0 && verticalInput == 1)
         {
-            offset = new Vector3(0, 1, 0);
+            offset = new Vector3(0, .5f, 0);
         } else if (horizontalInput == -1 && verticalInput == 0)
         {
-            offset = new Vector3(-1, 0, 0);
+            offset = new Vector3(-.5f, 0, 0);
         } else if (horizontalInput == 0 && verticalInput == -1)
         {
-            offset = new Vector3(0, -1, 0);
+            offset = new Vector3(0, -.5f, 0);
         }
 
         transform.position = player.position + offset;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Vector3 knockBack = (collision.gameObject.transform.position - transform.position).normalized;
+
+            collision.gameObject.transform.position += knockBack;
+        }
     }
 }
