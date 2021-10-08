@@ -48,6 +48,9 @@ public class PlayerController : MonoBehaviour
             currentFireRate -= Time.deltaTime;
         }
 
+        lastX = horizontalInput;
+        lastY = verticalInput;
+
         #region State Machine
         switch (state)
         {
@@ -59,7 +62,7 @@ public class PlayerController : MonoBehaviour
                 if (horizontalInput != 0 || verticalInput != 0)
                 {
                     state = PlayerState.move;
-                } else if (Input.GetKeyDown(KeyCode.Space))
+                } else if (Input.GetKey(KeyCode.Space))
                 {
                     state = PlayerState.attack;
                 }
@@ -74,13 +77,13 @@ public class PlayerController : MonoBehaviour
                 if (horizontalInput == 0 && verticalInput == 0)
                 {
                     state = PlayerState.idle;
-                } else if (Input.GetKeyDown(KeyCode.Space))
+                } else if (Input.GetKey(KeyCode.Space))
                 {
                     state = PlayerState.attack;
                 } else
                 {
-                    lastX = horizontalInput;
-                    lastY = verticalInput;
+                    //lastX = horizontalInput;
+                    //lastY = verticalInput;
                 }
                 break;
             #endregion
@@ -166,14 +169,6 @@ public class PlayerController : MonoBehaviour
             currentAmmo = collision.GetComponent<WeaponStats>().weaponAmmo;
             weaponFireRate = collision.GetComponent<WeaponStats>().fireRate;
             Destroy(collision.gameObject);
-        }
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy" && state == PlayerState.attack)
-        {
-            Debug.Log("Hoi");
         }
     }
 }
