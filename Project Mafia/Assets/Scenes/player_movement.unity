@@ -163,7 +163,6 @@ GameObject:
   m_Component:
   - component: {fileID: 189248661}
   - component: {fileID: 189248662}
-  - component: {fileID: 189248663}
   m_Layer: 0
   m_Name: PunchPoint
   m_TagString: Untagged
@@ -199,32 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1573544840}
   offset: {x: 0, y: 0, z: 0}
---- !u!61 &189248663
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189248660}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.24679421, y: 0.9490196}
-  m_EdgeRadius: 0
+  offsetValue: 0.75
 --- !u!1 &817268154
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +592,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentAmmo: 0
   bulletPrefab: {fileID: 4418770221078128605, guid: 7840645e8cf9c824d9d951d4973b3503, type: 3}
+  punchPoint: {fileID: 189248661}
+  punchRange: 0.4
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 64
   state: 0
 --- !u!61 &1573544837
 BoxCollider2D:

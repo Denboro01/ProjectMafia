@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
 
     public GameObject bulletPrefab;
 
+    public Transform punchPoint;
+    public float punchRange = 0.75f;
+    public LayerMask enemyLayers;
+
     public enum PlayerState
     {
         idle,
@@ -125,7 +129,18 @@ public class PlayerController : MonoBehaviour
                     // Punch animation
 
                     // punch
-                    
+
+                    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(punchPoint.position, punchRange, enemyLayers);
+
+                    foreach (Collider2D enemy in hitEnemies)
+                    {
+                        Debug.Log("We hit him");
+
+                        Vector3 knockBack = (enemy.transform.position - punchPoint.position).normalized;
+
+                        enemy.transform.position += knockBack;
+                    }
+
                     // Manage state
                     state = PlayerState.idle;
                 } else
@@ -170,5 +185,10 @@ public class PlayerController : MonoBehaviour
             weaponFireRate = collision.GetComponent<WeaponStats>().fireRate;
             Destroy(collision.gameObject);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(punchPoint.position, punchRange);
     }
 }
