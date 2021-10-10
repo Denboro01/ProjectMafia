@@ -18,22 +18,20 @@ public class EnemiesAI : MonoBehaviour
     private bool fireCooldown;
     private float timer;
     private float forgetPlayerTimer;
-    private Rigidbody2D rb;
 
     void Start()
     {
         timer = 2;
-        wallLayerMask = LayerMask.GetMask("Default");
+        wallLayerMask = LayerMask.GetMask("Obstacles");
 
         enemyMovement = GetComponent<EnemyMovement>();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
     {
         if (playerDetector.playerInRange)
         {
-            visibilityCheck();
+            VisibilityCheck();
         }
 
         Timer();
@@ -47,7 +45,7 @@ public class EnemiesAI : MonoBehaviour
     }
 
 
-    private void visibilityCheck()
+    private void VisibilityCheck()
     {
 
 
@@ -94,10 +92,17 @@ public class EnemiesAI : MonoBehaviour
     private void Firing()
     {
 
+        Vector3 firingDirection = new Vector3(player.transform.position.x, player.transform.position.y);
+        Vector3 dir = firingDirection - transform.position;
+
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
         if (fireCooldown)
         {
-            Instantiate(enemyBullet, enemyFirePoint.position, enemyFirePoint.rotation);
+            Instantiate(enemyBullet, enemyFirePoint.position, rotation);
         }
+
     }
 
 

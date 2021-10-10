@@ -22,7 +22,7 @@ public class EnemyMovement : MonoBehaviour
     private bool Turn;
     
     private bool rotationHasReset;
-    private Vector2 direction;
+    public Vector2 direction;
     private Vector2 rotation;
     private Vector2 force;
     private Seeker seeker;
@@ -131,23 +131,25 @@ public class EnemyMovement : MonoBehaviour
 
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         */
+
+        // if it works...
         if (rotation.x > 0 && rotation.x > rotation.y)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
+        } 
         if (rotation.y > 0 && rotation.y > rotation.x)
         {
             transform.rotation = Quaternion.Euler(0, 0, 90);
-        }
-        if (rotation.x < 0 && rotation.x < rotation.y)
+        } 
+        if (rotation.x < 0 && -rotation.x > rotation.y)
         {
             transform.rotation = Quaternion.Euler(0, 0, 180);
-        }
-        if (rotation.y < 0 && rotation.y < rotation.x)
+        } 
+        if (rotation.y < 0 && -rotation.y > rotation.x)
         {
             transform.rotation = Quaternion.Euler(0, 0, 270);
         }
-
+        
 
     }
 

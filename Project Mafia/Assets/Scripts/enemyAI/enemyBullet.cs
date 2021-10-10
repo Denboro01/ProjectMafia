@@ -9,6 +9,13 @@ public class EnemyBullet : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    private EnemiesAI enemyAI;
+
+
+    private void Start()
+    {
+        enemyAI = GetComponent<EnemiesAI>();
+    }
 
     private void Update()
     {
