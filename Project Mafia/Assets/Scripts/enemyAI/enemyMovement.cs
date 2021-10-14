@@ -20,7 +20,7 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 lastPosition;
     private float rotateTimer;
     private bool Turn;
-    
+
     private bool rotationHasReset;
     public Vector2 direction;
     private Vector2 rotation;
@@ -49,7 +49,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-   
+
 
     private void FixedUpdate()
     {
@@ -120,7 +120,7 @@ public class EnemyMovement : MonoBehaviour
 
     }
 
-    
+
     private void LookForPlayer()
     {
         /*
@@ -136,20 +136,20 @@ public class EnemyMovement : MonoBehaviour
         if (rotation.x > 0 && rotation.x > rotation.y)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
-        } 
+        }
         if (rotation.y > 0 && rotation.y > rotation.x)
         {
             transform.rotation = Quaternion.Euler(0, 0, 90);
-        } 
+        }
         if (rotation.x < 0 && -rotation.x > rotation.y)
         {
             transform.rotation = Quaternion.Euler(0, 0, 180);
-        } 
+        }
         if (rotation.y < 0 && -rotation.y > rotation.x)
         {
             transform.rotation = Quaternion.Euler(0, 0, 270);
         }
-        
+
 
     }
 
@@ -170,7 +170,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (Turn)
         {
-            transform.Rotate(0,0,90f);
+            transform.Rotate(0, 0, 90f);
         }
     }
 }
