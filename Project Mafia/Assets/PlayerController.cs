@@ -8,14 +8,12 @@ public class PlayerController : MonoBehaviour
     private float weaponFireRate;
     private Vector2 movement;
     private float movementSpeed = 200f;
-
-    private Vector3 bulletSpawnOffset;
-
     private float lastX;
     private float lastY;
 
     private Rigidbody2D rb;
 
+    private Vector3 bulletSpawnOffset;
     public GameObject bulletPrefab;
 
     public Transform punchPoint;
