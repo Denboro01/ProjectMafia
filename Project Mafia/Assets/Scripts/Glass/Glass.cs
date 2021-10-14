@@ -33,8 +33,10 @@ public class Glass : MonoBehaviour
                 Vector3 position = new Vector3(transform.position.x + randomPositionx, transform.position.y + randomPositionz, 0.2f);
                 Instantiate(GlassShard, position, rotation);
             }
+            c.enabled = false;
+            AstarPath.active.Scan();
+
             Destroy(gameObject);
-            Debug.Log("destroyed");
         }
     }
     
