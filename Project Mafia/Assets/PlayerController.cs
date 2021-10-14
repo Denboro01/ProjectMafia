@@ -129,8 +129,6 @@ public class PlayerController : MonoBehaviour
 
                     foreach (Collider2D enemy in hitEnemies)
                     {
-                        Debug.Log("We hit him");
-
                         Vector3 knockBack = (enemy.transform.position - punchPoint.position).normalized;
 
                         enemy.transform.position += knockBack;
