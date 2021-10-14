@@ -98,7 +98,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.2, y: 0.1}
   m_Direction: 1
---- !u!114 &8321912563443535281
+--- !u!114 &6810105007224785406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5121691146572152553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dbc170118e30bb48942543f60268d6e, type: 3}
+  m_Script: {fileID: 11500000, guid: c777ba47f6f2dac45a9e60f8613e7d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBulletSpeed: 20
