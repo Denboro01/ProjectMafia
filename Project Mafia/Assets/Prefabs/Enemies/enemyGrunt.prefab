@@ -205,7 +205,7 @@ MonoBehaviour:
   playerDetector: {fileID: 6921419647594198990}
   startPathing: 0
   playerSeen: 0
-  enemyMovement: {fileID: 0}
+  enemyMovement: {fileID: 3637923126939270036}
   enemyBullet: {fileID: 5121691146572152553, guid: f9a37cd5a6cfcc242af453ded6cba394, type: 3}
   wallLayerMask:
     serializedVersion: 2
@@ -227,7 +227,7 @@ MonoBehaviour:
   isChasing: 0
   enemyAI: {fileID: 6549730677497198229}
   enemySpeed: 100
-  nextWaypointDistance: 0.5
+  nextWaypointDistance: 1
   direction: {x: 0, y: 0}
 --- !u!1 &4010281119717970466
 GameObject:
