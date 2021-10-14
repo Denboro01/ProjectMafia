@@ -311,7 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIexMxv0XTgIAAPUEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMuS2jAQ/BVK57Bl3iG3BFg2BxZqSWovvghrjFXIkkuP5bHFv2ckG9vrnBDTPaPumZE/CZemgMQqvdacbRQD8qNH/Jl86zXgC1zoUck9v8GD886ZzTyJBs4btVxhfODTjMrBap78lEfhyREGneSp0vmKHWGhjDUYTqkwgJBW1mdLDH32yAV/+nOfcsXTcOZPNzzNo94djwlIC7qhRk+TivogljwnE0HzApgX3dCHdeGSJtFOxYiexr6+EoKbSg2x1yK43RcZaPB2GadoLijwXjPgx8z6eu3cbZoasJUmTa9LrrFHZVHyS5WNy6k5lcI+qHD+muG0FFUW3fyH9wcBTrXKXx73DiJ/h814cnqj14Qa2+psO7z8KtzJMxUnehDwnoF8VWutnGQIWu18qjMwXDZ/a2uLDJJTEy+ldoKuaM2nMx3v4R7cXxaC54e68RjYCxXaHaYPGkfzGwWH3TBVCYx6FX8N/KHH9hJVwDPXxiJUuZRe3kE57alkFXrm3Ti7UFpCCFeiC5BU2OsOy9juCDtY69oO8kz9c6kur7DHK+ikhHDDj6IOtFPnelgmU+cNmGzrrOASGtEeeMU+LZSU5Ya1e/JI2zud0qSVdnScfV0tEs0nI5gmEA3ZdDSY0T5LvzM2OYwoS4bj2XhOwu5xiT6p2JVCq/bg1GRTXOKePb4ivbWmRdh2pul5zW+5arWcy1TtEw0gt2WFWjhovASfJVsxjg3ag7VchnmTz5gIlZyAxXWhODhdXaymcVMlJgX/UNZHYrIIn42Y3Mn9H1BLAwQUAAAICAAACCHs3RWUzW0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNVRUEovSizIKAaKGII4pZkpIHa0koGlqXGqWXKqgVGKmbGheaJuSppFSoppknFiSrKRibmJpVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAACCHsTMb9F04CAAD1BAAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHs3RWUzW0AAAB4AAAACQAkAAAAAAAAAAAAAACbAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAFMDAAAAAA==
+    dataString: UEsDBBQAAAgIAAAIIewmIj67TgIAAPYEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVEuT2jAM/iuMz2UnvEtvLbBsDyzM0s5ecjGxQjw4dsaP5bHDf6/shCSbnhDSJ+n7JDmfhEtTQGKVXmvONooB+dEj3ibfek3wBS70qOSe3+CBeefMZh5EA+aNWq7QP/BpRuVgNU9+yqPw4AidTvJU6XzFjrBQxhp0p1QYwJBW1mdLdH32yAV/+nOfckVrOPPWDa151LujmYC0oBto9DSpoA9giXMyETQvgHnSDXxYFy5hEuVUiOhp7OsrIbip2BB7LYLafZGBBi+XcYriAgOvNQN+zKyv187dpqkBW3HS9LrkGmdUFiW/VDm4nJpTSeyDCufbDKclqbLo5r94fxDCqVb5y6PvIPI9bMaT0xu9JtTY1mTb7uVX4k6eqTjRg4D3DOSrWmvlJMOg1c6nOgPDZfO3lrbIIDk1/pJqx+mK1n462/Ea7kH9ZSF4fqgHj469UGHcYfugcTW/kXC4DVOVQK9n8dfAH3psH1EVeObaWAxVKqWnd1BOeyhZhZl5Nc4ulJYQ3BXpAiQV9rrDMra7wk6s1bYTeab+uVTNq9jjFXRSgrvBR1EntFPnelkmU+cNmGzrrOASGtI+8IpzWigpywtrz+SRtnc6pUkr7eg4+3paJJpPRjBNIBqy6Wgwo32WfmdschhRlgzHs/GchNvjEnVSsSuJVuPBrcmmuMQ7e3xFemtNi3DtTNPzmt9y1SbIZar2iQaQ27JEzRw0dsF3yVaM44T2YC2XYeHkMyZCJSdgcd0zDlJXF6tp3FSJScE/lPWemCzCdyMmd3L/B1BLAwQUAAAICAAACCHs3RWUzW0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNVRUEovSizIKAaKGII4pZkpIHa0koGlqXGqWXKqgVGKmbGheaJuSppFSoppknFiSrKRibmJpVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAACCHsJiI+u04CAAD2BAAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHs3RWUzW0AAAB4AAAACQAkAAAAAAAAAAAAAACbAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAFMDAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -876,6 +876,115 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1046937789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1046937792}
+  - component: {fileID: 1046937791}
+  - component: {fileID: 1046937790}
+  m_Layer: 8
+  m_Name: Wall (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1046937790
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046937789}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!212 &1046937791
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046937789}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Color: {r: 0.5647059, g: 0.5647059, b: 0.5647059, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1046937792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046937789}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5, y: -4.5, z: 0}
+  m_LocalScale: {x: 5, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1130380874
 GameObject:
