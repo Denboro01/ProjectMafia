@@ -52,9 +52,6 @@ public class PlayerController : MonoBehaviour
             currentFireRate -= Time.deltaTime;
         }
 
-        lastX = horizontalInput;
-        lastY = verticalInput;
-
         #region State Machine
         switch (state)
         {
@@ -86,8 +83,8 @@ public class PlayerController : MonoBehaviour
                     state = PlayerState.attack;
                 } else
                 {
-                    //lastX = horizontalInput;
-                    //lastY = verticalInput;
+                    lastX = horizontalInput;
+                    lastY = verticalInput;
                 }
                 break;
             #endregion
@@ -163,7 +160,7 @@ public class PlayerController : MonoBehaviour
             case PlayerState.death:
                 Destroy(gameObject);
                 break;
-            #endregion
+                #endregion
         }
         #endregion
 
