@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour
     {
         idle,
         move,
-        attack,
+        shoot,
+        punch,
         hurt,
         death
     }
@@ -61,9 +62,12 @@ public class PlayerController : MonoBehaviour
                 if (horizontalInput != 0 || verticalInput != 0)
                 {
                     state = PlayerState.move;
-                } else if (Input.GetKey(KeyCode.Space))
+                } else if (Input.GetButton("Fire1"))
                 {
-                    state = PlayerState.attack;
+                    state = PlayerState.shoot;
+                } else if (Input.GetButton("Fire2"))
+                {
+                    state = PlayerState.punch;
                 }
                 break;
             #endregion
@@ -76,9 +80,12 @@ public class PlayerController : MonoBehaviour
                 if (horizontalInput == 0 && verticalInput == 0)
                 {
                     state = PlayerState.idle;
-                } else if (Input.GetKey(KeyCode.Space))
+                } else if (Input.GetButton("Fire1"))
                 {
-                    state = PlayerState.attack;
+                    state = PlayerState.shoot;
+                } else if (Input.GetButton("Fire2"))
+                {
+                    state = PlayerState.punch;
                 } else
                 {
                     lastX = horizontalInput;
@@ -87,8 +94,8 @@ public class PlayerController : MonoBehaviour
                 break;
             #endregion
 
-            #region Attack State
-            case PlayerState.attack:
+            #region Shoot State
+            case PlayerState.shoot:
                 if (currentAmmo > 0 && currentFireRate <= 0)
                 {
                     // Fire animation
@@ -112,34 +119,38 @@ public class PlayerController : MonoBehaviour
 
                     bulletSpawnOffset = new Vector3(bulletPositionX, bulletPositionY);
 
-                    Instantiate(bulletPrefab, transform.position + bulletSpawnOffset, Quaternion.Euler(new Vector3 (0, 0, bulletAngle)));
+                    Instantiate(bulletPrefab, transform.position + bulletSpawnOffset, Quaternion.Euler(new Vector3(0, 0, bulletAngle)));
 
                     currentAmmo--;
                     currentFireRate = weaponFireRate;
 
                     // Manage state
                     state = PlayerState.idle;
-                } else if (currentAmmo <= 0)
-                {
-                    // Punch animation
-
-                    // punch
-
-                    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(punchPoint.position, punchRange, enemyLayers);
-
-                    foreach (Collider2D enemy in hitEnemies)
-                    {
-                        Vector3 knockBack = (enemy.transform.position - punchPoint.position).normalized;
-
-                        enemy.transform.position += knockBack;
-                    }
-
-                    // Manage state
-                    state = PlayerState.idle;
-                } else
+                }
+                else
                 {
                     state = PlayerState.idle;
                 }
+                break;
+            #endregion
+
+            #region Punch State
+            case PlayerState.punch:
+                // Punch animation
+
+                // punch
+
+                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(punchPoint.position, punchRange, enemyLayers);
+
+                foreach (Collider2D enemy in hitEnemies)
+                {
+                    Vector3 knockBack = (enemy.transform.position - punchPoint.position).normalized;
+
+                    enemy.transform.position += knockBack;
+                }
+
+                // Manage state
+                state = PlayerState.idle;
                 break;
             #endregion
 
