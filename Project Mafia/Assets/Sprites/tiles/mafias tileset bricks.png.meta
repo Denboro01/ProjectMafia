@@ -208,19 +208,15 @@ TextureImporter:
       name: mafias tileset bricks_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 32
         y: 112
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -0.03558922, y: 7.943863}
-        - {x: 0.06567764, y: -1.0741882}
-        - {x: 8, y: -0.9723892}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 08e3dd70fdecf9500800000000000000
@@ -233,18 +229,18 @@ TextureImporter:
       name: mafias tileset bricks_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 80
         y: 112
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
       - - {x: -8, y: 8}
-        - {x: -8, y: -0.9794693}
-        - {x: 8, y: -1.1478424}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
         - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
@@ -258,12 +254,12 @@ TextureImporter:
       name: mafias tileset bricks_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 96
         y: 112
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -279,17 +275,17 @@ TextureImporter:
       name: mafias tileset bricks_3
       rect:
         serializedVersion: 2
-        x: 48
+        x: 112
         y: 112
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -0.08459091, y: 8}
-        - {x: -0.08459091, y: -8}
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       tessellationDetail: 0
@@ -304,19 +300,19 @@ TextureImporter:
       name: mafias tileset bricks_4
       rect:
         serializedVersion: 2
-        x: 64
-        y: 112
+        x: 32
+        y: 96
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
       - - {x: -8, y: 8}
         - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+        - {x: 1, y: -8}
+        - {x: 1, y: 8}
       tessellationDetail: 0
       bones: []
       spriteID: 87c867ac91958d2c0800000000000000
@@ -329,17 +325,17 @@ TextureImporter:
       name: mafias tileset bricks_5
       rect:
         serializedVersion: 2
-        x: 80
-        y: 112
+        x: 48
+        y: 96
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
+      - - {x: -1, y: 8}
+        - {x: -1, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       tessellationDetail: 0
@@ -354,12 +350,12 @@ TextureImporter:
       name: mafias tileset bricks_6
       rect:
         serializedVersion: 2
-        x: 96
-        y: 112
+        x: 80
+        y: 96
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -379,17 +375,17 @@ TextureImporter:
       name: mafias tileset bricks_7
       rect:
         serializedVersion: 2
-        x: 112
-        y: 112
+        x: 96
+        y: 96
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: 0.281044, y: -8}
-        - {x: 0.281044, y: 8}
+      - - {x: 8, y: -8}
+        - {x: 8, y: 8}
         - {x: -8, y: 8}
         - {x: -8, y: -8}
       tessellationDetail: 0
@@ -404,18 +400,18 @@ TextureImporter:
       name: mafias tileset bricks_8
       rect:
         serializedVersion: 2
-        x: 0
+        x: 112
         y: 96
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
       - - {x: -8, y: 8}
-        - {x: -8, y: -0.8672104}
-        - {x: 8, y: -1.0355911}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
         - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
@@ -429,19 +425,19 @@ TextureImporter:
       name: mafias tileset bricks_9
       rect:
         serializedVersion: 2
-        x: 16
-        y: 96
+        x: 0
+        y: 80
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
       - - {x: -8, y: 8}
-        - {x: -8, y: -1.1478348}
-        - {x: -2.9438744, y: -1.0355911}
-        - {x: -3.0205364, y: 8}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
       spriteID: 01a114af3df351cc0800000000000000
@@ -454,12 +450,12 @@ TextureImporter:
       name: mafias tileset bricks_10
       rect:
         serializedVersion: 2
-        x: 48
-        y: 96
+        x: 16
+        y: 80
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -480,11 +476,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 96
+        y: 80
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -505,11 +501,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 96
+        y: 80
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -530,16 +526,16 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 96
+        y: 80
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -0.06274414, y: -8}
-        - {x: 0.281044, y: 8}
+      - - {x: 8, y: -8}
+        - {x: 8, y: 8}
         - {x: -8, y: 8}
         - {x: -8, y: -8}
       tessellationDetail: 0
@@ -555,11 +551,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 80
+        y: 64
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -580,16 +576,16 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 80
+        y: 64
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
+      - - {x: 5, y: 7}
+        - {x: 5, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       tessellationDetail: 0
@@ -604,12 +600,12 @@ TextureImporter:
       name: mafias tileset bricks_16
       rect:
         serializedVersion: 2
-        x: 64
-        y: 80
+        x: 80
+        y: 64
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -629,12 +625,12 @@ TextureImporter:
       name: mafias tileset bricks_17
       rect:
         serializedVersion: 2
-        x: 80
-        y: 80
+        x: 96
+        y: 64
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -654,12 +650,12 @@ TextureImporter:
       name: mafias tileset bricks_18
       rect:
         serializedVersion: 2
-        x: 96
-        y: 80
+        x: 112
+        y: 64
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -679,17 +675,17 @@ TextureImporter:
       name: mafias tileset bricks_19
       rect:
         serializedVersion: 2
-        x: 112
-        y: 80
+        x: 0
+        y: 48
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -0.06274414, y: -8}
-        - {x: 0.39564514, y: 7.885399}
+      - - {x: -5, y: -8}
+        - {x: -5, y: 8}
         - {x: -8, y: 8}
         - {x: -8, y: -8}
       tessellationDetail: 0
@@ -704,17 +700,17 @@ TextureImporter:
       name: mafias tileset bricks_20
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
+      - - {x: 5, y: 8}
+        - {x: 5, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       tessellationDetail: 0
@@ -729,12 +725,12 @@ TextureImporter:
       name: mafias tileset bricks_21
       rect:
         serializedVersion: 2
-        x: 16
-        y: 64
+        x: 80
+        y: 48
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -754,17 +750,17 @@ TextureImporter:
       name: mafias tileset bricks_22
       rect:
         serializedVersion: 2
-        x: 48
-        y: 64
+        x: 96
+        y: 48
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: 0.072566986, y: 8}
-        - {x: -0.013790131, y: -8}
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       tessellationDetail: 0
@@ -779,12 +775,12 @@ TextureImporter:
       name: mafias tileset bricks_23
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
+        x: 112
+        y: 48
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -804,12 +800,12 @@ TextureImporter:
       name: mafias tileset bricks_24
       rect:
         serializedVersion: 2
-        x: 96
-        y: 64
+        x: 80
+        y: 32
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -829,17 +825,17 @@ TextureImporter:
       name: mafias tileset bricks_25
       rect:
         serializedVersion: 2
-        x: 112
-        y: 64
+        x: 96
+        y: 32
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: 0.281044, y: -8}
-        - {x: 0.28105164, y: 8}
+      - - {x: 8, y: -8}
+        - {x: 8, y: 8}
         - {x: -8, y: 8}
         - {x: -8, y: -8}
       tessellationDetail: 0
@@ -854,12 +850,12 @@ TextureImporter:
       name: mafias tileset bricks_26
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
+        x: 112
+        y: 32
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -871,277 +867,6 @@ TextureImporter:
       bones: []
       spriteID: f1871279482daa7e0800000000000000
       internalID: -1753357637994317793
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mafias tileset bricks_27
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6b6ec7a74264519c0800000000000000
-      internalID: -3957179575087339850
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mafias tileset bricks_28
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 0.059890747, y: 7.841545}
-        - {x: -0.1777916, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: b5f0e55e64056b580800000000000000
-      internalID: -8811767355477717157
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mafias tileset bricks_29
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ddb775d3801e8730800000000000000
-      internalID: 4003155277187104208
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mafias tileset bricks_30
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 791094ab79f7acbe0800000000000000
-      internalID: -1456211239858798185
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mafias tileset bricks_31
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 0.1664505, y: -8}
-        - {x: 0.051849365, y: 8}
-        - {x: -8, y: 8}
-        - {x: -8, y: -8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 36d7b0d2faa5dfd50800000000000000
-      internalID: 6772669123056598371
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mafias tileset bricks_32
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 0.21834183, y: 8}
-        - {x: 0.23767853, y: -1.0193367}
-        - {x: 8, y: -1.0985641}
-        - {x: 8, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: c1a7e55d76fde9300800000000000000
-      internalID: 260891465488431644
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mafias tileset bricks_33
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -1.1664505}
-        - {x: 8, y: -1.1664505}
-        - {x: 8, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 369fe815aadee2390800000000000000
-      internalID: -7841068585436907165
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mafias tileset bricks_34
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -0.9372597}
-        - {x: 0, y: -1.1664505}
-        - {x: 0.051849365, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: d7b0c7358e09fe770800000000000000
-      internalID: 8642285537454721917
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mafias tileset bricks_35
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2be7ba1864de32690800000000000000
-      internalID: -7627992456756494670
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mafias tileset bricks_36
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 53298b6d30a3a03b0800000000000000
-      internalID: -5545556202991611339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mafias tileset bricks_37
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 0.10014343, y: -8}
-        - {x: 0.013793945, y: 8}
-        - {x: -8, y: 8}
-        - {x: -8, y: -8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: aab16be577ec36a20800000000000000
-      internalID: 3054511984372751274
       vertices: []
       indices: 
       edges: []
