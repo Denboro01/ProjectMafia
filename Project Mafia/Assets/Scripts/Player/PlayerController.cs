@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     private int health = 100;
     public int currentAmmo;
+    private float bombCount;
     private float currentFireRate;
     private float weaponFireRate;
     private Vector2 movement;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 bulletSpawnOffset;
     public GameObject bulletPrefab;
+    public GameObject bomb;
 
     public Transform punchPoint;
     public float punchRange = 0.75f;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
         idle,
         move,
         attack,
+        bomb,
         hurt,
         death
     }
@@ -64,6 +67,9 @@ public class PlayerController : MonoBehaviour
                 } else if (Input.GetKey(KeyCode.Space))
                 {
                     state = PlayerState.attack;
+                } else if (Input.GetKey(KeyCode.B))
+                {
+                    state = PlayerState.bomb;
                 }
                 break;
             #endregion
@@ -143,6 +149,25 @@ public class PlayerController : MonoBehaviour
                 break;
             #endregion
 
+            #region bomb State
+            case PlayerState.bomb:
+                if (bombCount > 0)
+                {
+                    float bombPositionX = 1.5f * lastX;
+                    float bombPositionY = 1.5f * lastY;
+
+                    bulletSpawnOffset = new Vector3(bombPositionX, bombPositionY);
+                    Instantiate(bomb, transform.position + bulletSpawnOffset, transform.rotation);
+                
+                    bombCount--;
+                    state = PlayerState.idle;
+                } else
+                {
+                    state = PlayerState.idle;
+                }
+                break;
+            #endregion
+
             #region Hurt State
             case PlayerState.hurt:
                 // Play hurt animation
@@ -173,10 +198,26 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        /*
         if (collision.gameObject.tag == "Weapon" && Input.GetKey(KeyCode.E)) {
             currentAmmo = collision.GetComponent<WeaponStats>().weaponAmmo;
             weaponFireRate = collision.GetComponent<WeaponStats>().fireRate;
             Destroy(collision.gameObject);
+        }
+        */
+        if (Input.GetKey(KeyCode.E))
+        {
+            if (collision.gameObject.tag == "Weapon")
+            {
+                currentAmmo = collision.GetComponent<WeaponStats>().weaponAmmo;
+                weaponFireRate = collision.GetComponent<WeaponStats>().fireRate;
+                Destroy(collision.gameObject);
+            }
+            if (collision.gameObject.tag == "Bomb")
+            {
+                bombCount++;
+                Destroy(collision.gameObject);
+            }
         }
     }
 

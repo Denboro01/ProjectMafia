@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentAmmo: 0
   bulletPrefab: {fileID: 4418770221078128605, guid: 7840645e8cf9c824d9d951d4973b3503, type: 3}
+  bomb: {fileID: 3297769290404908435, guid: 2263547b4eeec1a4db6b21c72768a6a3, type: 3}
   punchPoint: {fileID: 7058945651679582262}
   punchRange: 0.4
   enemyLayers:
