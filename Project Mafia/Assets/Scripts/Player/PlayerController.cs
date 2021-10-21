@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
                 } else if (Input.GetKey(KeyCode.Space))
                 {
                     state = PlayerState.attack;
-                } else if (Input.GetKey(KeyCode.B))
+                } else if (Input.GetKeyDown(KeyCode.B))
                 {
                     state = PlayerState.bomb;
                 }
