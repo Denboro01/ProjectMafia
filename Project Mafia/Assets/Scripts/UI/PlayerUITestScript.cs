@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class PlayerUITestScript : MonoBehaviour
 {
+    public int maxHealth = 100;
+    public int health;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(5);
+        }
+    }
+
+    void TakeDamage(int damage)
+    {
+        health -= damage;
     }
 }
