@@ -185,8 +185,8 @@ MonoBehaviour:
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 21627
-    ctime1: 43908
+    ctime0: 17926
+    ctime1: 39321
     ctime2: 65535
     ctime3: 0
     ctime4: 0
@@ -204,6 +204,7 @@ MonoBehaviour:
     m_Mode: 1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  fill: {fileID: 924240761}
 --- !u!114 &163367785
 MonoBehaviour:
   m_ObjectHideFlags: 0
