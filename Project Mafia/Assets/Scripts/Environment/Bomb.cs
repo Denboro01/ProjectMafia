@@ -11,6 +11,9 @@ public class Bomb : MonoBehaviour
     [SerializeField]
     SpriteRenderer sprite;
 
+    [SerializeField]
+    Collider2D hitbox;
+
     private void Start()
     {
         Invoke("Explode", 3);
@@ -20,6 +23,8 @@ public class Bomb : MonoBehaviour
     {
         particles.Play();
         sprite.enabled = false;
+        hitbox.enabled = true;
         Destroy(gameObject, 1);
     }
+
 }

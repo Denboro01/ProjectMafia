@@ -4872,6 +4872,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3521854817899199228}
   - component: {fileID: 9164287175543069807}
+  - component: {fileID: 2600648781460742839}
   m_Layer: 0
   m_Name: playerBomb
   m_TagString: Untagged
@@ -4909,6 +4910,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 267113122291408993}
   sprite: {fileID: 5520899695167172809}
+  hitbox: {fileID: 2600648781460742839}
+--- !u!58 &2600648781460742839
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3297769290404908435}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 4
 --- !u!1 &6996919335682524490
 GameObject:
   m_ObjectHideFlags: 0

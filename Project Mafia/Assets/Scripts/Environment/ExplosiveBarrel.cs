@@ -10,13 +10,11 @@ public class ExplosiveBarrel : MonoBehaviour
     [SerializeField]
     SpriteRenderer sprite;
 
-    private Collider2D c;
+    [SerializeField] 
+    Collider2D hitbox;
 
-
-    private void Start()
-    {
-        c = GetComponent<Collider2D>();
-    }
+    [SerializeField]
+    Collider2D c;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -32,6 +30,7 @@ public class ExplosiveBarrel : MonoBehaviour
         particles.Play();
         sprite.enabled = false;
         c.enabled = false;
+        hitbox.enabled = true;
         Destroy(gameObject, 1);
     }
 }
