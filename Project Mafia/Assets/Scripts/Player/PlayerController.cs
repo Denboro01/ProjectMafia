@@ -221,6 +221,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Ëxplosion")
+        {
+            // take DMG
+            state = PlayerState.hurt;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(punchPoint.position, punchRange);
