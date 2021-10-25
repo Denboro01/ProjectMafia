@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickUpItem : MonoBehaviour
 {
     public bool hasGun = false;
+    public float bombCount;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
