@@ -6,13 +6,10 @@ public class ExplosiveBarrel : MonoBehaviour
 {
     [SerializeField]
     ParticleSystem particles;
-
     [SerializeField]
     SpriteRenderer sprite;
-
     [SerializeField] 
     Collider2D hitbox;
-
     [SerializeField]
     Collider2D c;
 
@@ -25,6 +22,14 @@ public class ExplosiveBarrel : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Explosion")
+        {
+            Explode();
+        }
+    }
+
     private void Explode()
     {
         particles.Play();
@@ -33,4 +38,5 @@ public class ExplosiveBarrel : MonoBehaviour
         hitbox.enabled = true;
         Destroy(gameObject, 1);
     }
+
 }

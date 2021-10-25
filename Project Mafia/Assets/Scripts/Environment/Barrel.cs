@@ -12,13 +12,26 @@ public class Barrel : MonoBehaviour
         if (other.gameObject.tag == "PlayerBullet")
         {
             Destroy(other.gameObject);
-            if (Random.Range(0,3) == 2)
-            {
-                Instantiate(bomb, transform.position, transform.rotation);
-            }
-            Destroy(gameObject);
+            Destroyed();
         }
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Explosion")
+        {
+            Destroyed();
+        }
+    }
+
+    private void Destroyed()
+    {
+        if (Random.Range(0, 3) == 2)
+        {
+            Instantiate(bomb, transform.position, transform.rotation);
+        }
+        Destroy(gameObject);
+    }
+
+
 }

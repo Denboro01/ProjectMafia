@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - PlayerBullet
   - Bomb
+  - Explosion
   layers:
   - Default
   - TransparentFX
