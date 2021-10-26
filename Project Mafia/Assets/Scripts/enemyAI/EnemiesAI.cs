@@ -11,7 +11,7 @@ public class EnemiesAI : MonoBehaviour
     public bool startPathing;
     public bool playerSeen;
 
-    [SerializeField] private EnemyMovement enemyMovement;
+    [SerializeField] private enemyMovement enemyMovement;
     [SerializeField] private GameObject enemyBullet;
     [SerializeField] private LayerMask wallLayerMask;
 
@@ -22,9 +22,8 @@ public class EnemiesAI : MonoBehaviour
     void Start()
     {
         timer = 2;
-        wallLayerMask = LayerMask.GetMask("Obstacles");
 
-        enemyMovement = GetComponent<EnemyMovement>();
+        enemyMovement = GetComponent<enemyMovement>();
     }
 
     void FixedUpdate()

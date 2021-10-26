@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
+public class enemyBullet : MonoBehaviour
 {
 
     public float enemyBulletSpeed = 20f;
