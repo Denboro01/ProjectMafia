@@ -10,6 +10,7 @@ TagManager:
   - PlayerBullet
   - Bomb
   - Explosion
+  - Barricade
   layers:
   - Default
   - TransparentFX
@@ -49,4 +50,7 @@ TagManager:
     locked: 0
   - name: OBJECTS
     uniqueID: 181280165
+    locked: 0
+  - name: Player
+    uniqueID: 363672945
     locked: 0

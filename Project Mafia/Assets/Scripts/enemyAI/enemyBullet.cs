@@ -24,7 +24,7 @@ public class enemyBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.layer == 8 || other.gameObject.layer == 3)
+        if (other.gameObject.layer == 0 || other.gameObject.layer == 3)
         {
             Destroy(gameObject);
         }

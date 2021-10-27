@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public Transform punchPoint;
     public float punchRange = 0.75f;
     public LayerMask enemyLayers;
+    public float ventCooldown;
 
     public enum PlayerState
     {
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(ventCooldown);
+        VentTimer();
         // Initialize player input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
@@ -67,7 +70,7 @@ public class PlayerController : MonoBehaviour
                 } else if (Input.GetKey(KeyCode.Space))
                 {
                     state = PlayerState.attack;
-                } else if (Input.GetKeyDown(KeyCode.B))
+                } else if (Input.GetKeyDown(KeyCode.B) && bombCount > 0)
                 {
                     state = PlayerState.bomb;
                 }
@@ -151,20 +154,14 @@ public class PlayerController : MonoBehaviour
 
             #region bomb State
             case PlayerState.bomb:
-                if (bombCount > 0)
-                {
-                    float bombPositionX = 1.5f * lastX;
-                    float bombPositionY = 1.5f * lastY;
+                float bombPositionX = 1.5f * lastX;
+                float bombPositionY = 1.5f * lastY;
 
-                    bulletSpawnOffset = new Vector3(bombPositionX, bombPositionY);
-                    Instantiate(bomb, transform.position + bulletSpawnOffset, transform.rotation);
+                bulletSpawnOffset = new Vector3(bombPositionX, bombPositionY);
+                Instantiate(bomb, transform.position + bulletSpawnOffset, transform.rotation);
                 
-                    bombCount--;
-                    state = PlayerState.idle;
-                } else
-                {
-                    state = PlayerState.idle;
-                }
+                bombCount--;
+                state = PlayerState.idle;
                 break;
             #endregion
 
@@ -233,5 +230,17 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(punchPoint.position, punchRange);
+    }
+
+    private void VentTimer()
+    {
+        if (ventCooldown > 0) 
+        {
+            ventCooldown -= Time.deltaTime;
+        }
+        if (ventCooldown <= 0)
+        {
+            ventCooldown = 0;
+        }
     }
 }

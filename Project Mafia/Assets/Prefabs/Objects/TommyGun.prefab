@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc6b09bef9ff314ba3526b21365b85f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponAmmo: 10
-  fireRate: 0.5
+  weaponAmmo: 40
+  fireRate: 0.2
 --- !u!70 &2706623084744077216
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

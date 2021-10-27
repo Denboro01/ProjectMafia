@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosiveBarrel : MonoBehaviour
+public class BombItem : MonoBehaviour
 {
     [SerializeField]
     ParticleSystem particles;
+
     [SerializeField]
     SpriteRenderer sprite;
-    [SerializeField] 
-    Collider2D hitbox;
-    [SerializeField]
-    Collider2D c;
 
+    [SerializeField]
+    Collider2D hitbox;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -35,9 +34,7 @@ public class ExplosiveBarrel : MonoBehaviour
     {
         particles.Play();
         sprite.enabled = false;
-        c.enabled = false;
         hitbox.enabled = true;
-        Destroy(gameObject, 0.8f);
+        Destroy(gameObject, 1);
     }
-
 }
