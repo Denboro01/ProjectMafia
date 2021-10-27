@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
     {
         idle,
         move,
-        attack,
         bomb,
         shoot,
         punch,
@@ -81,17 +80,20 @@ public class PlayerController : MonoBehaviour
                 if (horizontalInput != 0 || verticalInput != 0)
                 {
                     state = PlayerState.move;
-                } else if (Input.GetButton("Fire1"))
-                {
-                    state = PlayerState.attack;
-                } else if (Input.GetKeyDown(KeyCode.B))
-                    state = PlayerState.shoot;
-                } else if (Input.GetButton("Fire2"))
-                {
-                    state = PlayerState.bomb;
-                    state = PlayerState.punch;
                 }
-                break;
+                else if (Input.GetButton("Fire1"))
+                {
+                state = PlayerState.shoot;
+                }
+                else if (Input.GetButton("Fire2"))
+                {
+                state = PlayerState.punch;
+                }
+                else if (Input.GetKeyDown(KeyCode.B)) 
+                { 
+                    state = PlayerState.bomb;
+                }
+              break;
             #endregion
 
             #region Move State
