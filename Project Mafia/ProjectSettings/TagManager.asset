@@ -8,8 +8,7 @@ TagManager:
   - Enemy
   - Weapon
   - PlayerBullet
-  - Bomb
-  - Explosion
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

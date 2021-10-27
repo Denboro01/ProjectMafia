@@ -1,10 +1,11 @@
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
-    private int health = 100;
     public int currentAmmo;
     private float bombCount;
+
     private float currentFireRate;
     private float weaponFireRate;
     private Vector2 movement;
@@ -22,6 +23,15 @@ public class PlayerController : MonoBehaviour
     public float punchRange = 0.75f;
     public LayerMask enemyLayers;
 
+    public int maxHealth = 100;
+    public int health;
+
+    public HealthBar healthBar;
+
+    public static Action<int> InitializePlayer;
+    public static Action<int> PewPew;
+    public static Action<int> PlayerHealth;
+
     public enum PlayerState
     {
         idle,
@@ -38,6 +48,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        health = maxHealth;
+
+        healthBar.SetMaxHealth(maxHealth);
+        InitializePlayer?.Invoke(currentAmmo);
     }
 
     // Update is called once per frame
@@ -100,6 +115,9 @@ public class PlayerController : MonoBehaviour
                     // Fire animation
 
                     // Fire
+                    currentAmmo--;
+                    PewPew?.Invoke(currentAmmo);
+
                     float bulletAngle = Mathf.Atan2(lastY, lastX) * Mathf.Rad2Deg;
 
                     if (bulletAngle == 45 || bulletAngle == -45)
@@ -118,9 +136,8 @@ public class PlayerController : MonoBehaviour
 
                     bulletSpawnOffset = new Vector3(bulletPositionX, bulletPositionY);
 
-                    Instantiate(bulletPrefab, transform.position + bulletSpawnOffset, Quaternion.Euler(new Vector3 (0, 0, bulletAngle)));
-
-                    currentAmmo--;
+                    Instantiate(bulletPrefab, transform.position + bulletSpawnOffset, Quaternion.Euler(new Vector3 (0, 0, bulletAngle)));     
+                    
                     currentFireRate = weaponFireRate;
 
                     // Manage state
@@ -171,7 +188,9 @@ public class PlayerController : MonoBehaviour
             #region Hurt State
             case PlayerState.hurt:
                 // Play hurt animation
+                health -= 5;
 
+                PlayerHealth?.Invoke(health);
                 // Manage state
                 state = PlayerState.idle;
                 break;
@@ -203,6 +222,8 @@ public class PlayerController : MonoBehaviour
             currentAmmo = collision.GetComponent<WeaponStats>().weaponAmmo;
             weaponFireRate = collision.GetComponent<WeaponStats>().fireRate;
             Destroy(collision.gameObject);
+
+            PewPew?.Invoke(currentAmmo);
         }
         */
         if (Input.GetKey(KeyCode.E))
@@ -228,6 +249,12 @@ public class PlayerController : MonoBehaviour
             // take DMG
             state = PlayerState.hurt;
         }
+    }
+
+        if (collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "EnemyProjectile")
+        {
+            state = PlayerState.hurt;
+        }   
     }
 
     private void OnDrawGizmos()
