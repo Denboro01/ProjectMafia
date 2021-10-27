@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
         move,
         attack,
         bomb,
+        shoot,
+        punch,
         hurt,
         death
     }
@@ -79,12 +81,15 @@ public class PlayerController : MonoBehaviour
                 if (horizontalInput != 0 || verticalInput != 0)
                 {
                     state = PlayerState.move;
-                } else if (Input.GetKey(KeyCode.Space))
+                } else if (Input.GetButton("Fire1"))
                 {
                     state = PlayerState.attack;
                 } else if (Input.GetKeyDown(KeyCode.B))
+                    state = PlayerState.shoot;
+                } else if (Input.GetButton("Fire2"))
                 {
                     state = PlayerState.bomb;
+                    state = PlayerState.punch;
                 }
                 break;
             #endregion
@@ -97,9 +102,12 @@ public class PlayerController : MonoBehaviour
                 if (horizontalInput == 0 && verticalInput == 0)
                 {
                     state = PlayerState.idle;
-                } else if (Input.GetKey(KeyCode.Space))
+                } else if (Input.GetButton("Fire1"))
                 {
-                    state = PlayerState.attack;
+                    state = PlayerState.shoot;
+                } else if (Input.GetButton("Fire2"))
+                {
+                    state = PlayerState.punch;
                 } else
                 {
                     lastX = horizontalInput;
@@ -108,8 +116,8 @@ public class PlayerController : MonoBehaviour
                 break;
             #endregion
 
-            #region Attack State
-            case PlayerState.attack:
+            #region Shoot State
+            case PlayerState.shoot:
                 if (currentAmmo > 0 && currentFireRate <= 0)
                 {
                     // Fire animation
@@ -142,27 +150,31 @@ public class PlayerController : MonoBehaviour
 
                     // Manage state
                     state = PlayerState.idle;
-                } else if (currentAmmo <= 0)
-                {
-                    // Punch animation
-
-                    // punch
-
-                    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(punchPoint.position, punchRange, enemyLayers);
-
-                    foreach (Collider2D enemy in hitEnemies)
-                    {
-                        Vector3 knockBack = (enemy.transform.position - punchPoint.position).normalized;
-
-                        enemy.transform.position += knockBack;
-                    }
-
-                    // Manage state
-                    state = PlayerState.idle;
-                } else
+                }
+                else
                 {
                     state = PlayerState.idle;
                 }
+                break;
+            #endregion
+
+            #region Punch State
+            case PlayerState.punch:
+                // Punch animation
+
+                // punch
+
+                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(punchPoint.position, punchRange, enemyLayers);
+
+                foreach (Collider2D enemy in hitEnemies)
+                {
+                    Vector3 knockBack = (enemy.transform.position - punchPoint.position).normalized;
+
+                    enemy.transform.position += knockBack;
+                }
+
+                // Manage state
+                state = PlayerState.idle;
                 break;
             #endregion
 
