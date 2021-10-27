@@ -244,18 +244,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ëxplosion")
+        if (collision.gameObject.tag == "Ëxplosion" || collision.gameObject.tag == "EnemyProjectile")
         {
             // take DMG
             state = PlayerState.hurt;
         }
     }
 
-        if (collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "EnemyProjectile")
-        {
-            state = PlayerState.hurt;
-        }   
-    }
 
     private void OnDrawGizmos()
     {
