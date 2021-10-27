@@ -6,14 +6,15 @@ public class PlayerUITestScript : MonoBehaviour
     public int maxHealth = 100;
     public int health;
 
-    private int equipAmmo = 100;
+    private int equipAmmo = 10;
     public int currentAmmo;
 
     public HealthBar healthBar;
 
     public static Action<int> InitializePlayer;
-
     public static Action<int> PewPew;
+
+    public static Action<int> PlayerHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -31,9 +32,12 @@ public class PlayerUITestScript : MonoBehaviour
         {
             TakeDamage(5);
 
-            currentAmmo--;
+            if (currentAmmo > 0)
+            {
+                currentAmmo--;
 
-            PewPew?.Invoke(currentAmmo);
+                PewPew?.Invoke(currentAmmo);
+            }
         }
     }
 
@@ -41,6 +45,6 @@ public class PlayerUITestScript : MonoBehaviour
     {
         health -= damage;
 
-        healthBar.SetHealth(health);
+        PlayerHealth?.Invoke(health);
     }
 }

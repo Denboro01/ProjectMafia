@@ -12,7 +12,17 @@ public class HealthBar : MonoBehaviour
 
     public Image fill;
 
-    public void SetHealth(int health)
+    private void OnEnable()
+    {
+        PlayerUITestScript.PlayerHealth += SetHealth;
+    }
+
+    private void OnDisable()
+    {
+        PlayerUITestScript.PlayerHealth -= SetHealth;
+    }
+
+    private void SetHealth(int health)
     {
         slider.value = health;
 
