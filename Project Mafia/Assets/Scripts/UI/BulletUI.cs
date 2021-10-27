@@ -9,14 +9,14 @@ public class BulletUI : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerUITestScript.PewPew += ammoCount;
-        PlayerUITestScript.InitializePlayer += ammoCount;
+        PlayerController.PewPew += ammoCount;
+        PlayerController.InitializePlayer += ammoCount;
     }
 
     private void OnDisable()
     {
-        PlayerUITestScript.PewPew -= ammoCount;
-        PlayerUITestScript.InitializePlayer -= ammoCount;
+        PlayerController.PewPew -= ammoCount;
+        PlayerController.InitializePlayer -= ammoCount;
     }
 
     void ammoCount(int currentAmmo)

@@ -14,12 +14,12 @@ public class HealthBar : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerUITestScript.PlayerHealth += SetHealth;
+        PlayerController.PlayerHealth += SetHealth;
     }
 
     private void OnDisable()
     {
-        PlayerUITestScript.PlayerHealth -= SetHealth;
+        PlayerController.PlayerHealth -= SetHealth;
     }
 
     private void SetHealth(int health)
