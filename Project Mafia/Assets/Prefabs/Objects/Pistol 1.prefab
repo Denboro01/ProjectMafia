@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1503680723374094482}
   - component: {fileID: 8160572718916518771}
+  - component: {fileID: 3130922430949621401}
   m_Layer: 0
   m_Name: Pistol 1
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +47,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponAmmo: 10
   fireRate: 0.5
+--- !u!70 &3130922430949621401
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3123389799488536218}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.2, y: 0.8}
+  m_Direction: 1
 --- !u!1 &7773898779677863117
 GameObject:
   m_ObjectHideFlags: 0
