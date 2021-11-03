@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6316918482352551697}
   - component: {fileID: 5376777972544594154}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4418770221078128605, guid: 7840645e8cf9c824d9d951d4973b3503, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4634000761646760383, guid: 7840645e8cf9c824d9d951d4973b3503, type: 3}
       propertyPath: m_FlipX

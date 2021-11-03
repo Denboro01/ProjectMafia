@@ -20,7 +20,7 @@ TagManager:
   - UI
   - Enemy
   - Background
-  - 
+  - Projectiles
   - 
   - 
   - 
@@ -57,7 +57,7 @@ TagManager:
   - name: OBJECTS
     uniqueID: 181280165
     locked: 0
-  - name: Player
+  - name: Organisms
     uniqueID: 363672945
     locked: 0
   - name: Barricade
