@@ -8,7 +8,9 @@ TagManager:
   - Enemy
   - Weapon
   - PlayerBullet
-  - EnemyProjectile
+  - Bomb
+  - Explosion
+  - Barricade
   layers:
   - Default
   - TransparentFX
@@ -17,8 +19,8 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
-  - 
+  - Background
+  - Projectiles
   - 
   - 
   - 
@@ -43,9 +45,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 763828273
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Walls
+    uniqueID: 2962150385
+    locked: 0
   - name: OBJECTS
     uniqueID: 181280165
+    locked: 0
+  - name: Organisms
+    uniqueID: 363672945
+    locked: 0
+  - name: Barricade
+    uniqueID: 3822935581
+    locked: 0
+  - name: Doors
+    uniqueID: 2435950283
+    locked: 0
+  - name: Particles
+    uniqueID: 3924926439
     locked: 0

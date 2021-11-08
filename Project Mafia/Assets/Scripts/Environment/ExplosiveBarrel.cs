@@ -13,12 +13,13 @@ public class ExplosiveBarrel : MonoBehaviour
     [SerializeField]
     Collider2D c;
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "PlayerBullet")
         {
             Destroy(collision.gameObject);
-            Explode();
+            Invoke("Explode", 0.2f);
         }
     }
 
@@ -26,7 +27,7 @@ public class ExplosiveBarrel : MonoBehaviour
     {
         if (collision.gameObject.tag == "Explosion")
         {
-            Explode();
+            Invoke("Explode", 0.2f);
         }
     }
 
@@ -36,7 +37,7 @@ public class ExplosiveBarrel : MonoBehaviour
         sprite.enabled = false;
         c.enabled = false;
         hitbox.enabled = true;
-        Destroy(gameObject, 1);
+        Destroy(gameObject, 0.8f);
     }
 
 }

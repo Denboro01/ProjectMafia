@@ -1,11 +1,10 @@
 using UnityEngine;
-using System;
 
 public class PlayerController : MonoBehaviour
 {
+    private int health = 100;
     public int currentAmmo;
     private float bombCount;
-
     private float currentFireRate;
     private float weaponFireRate;
     private Vector2 movement;
@@ -22,23 +21,14 @@ public class PlayerController : MonoBehaviour
     public Transform punchPoint;
     public float punchRange = 0.75f;
     public LayerMask enemyLayers;
-
-    public int maxHealth = 100;
-    public int health;
-
-    public HealthBar healthBar;
-
-    public static Action<int> InitializePlayer;
-    public static Action<int> PewPew;
-    public static Action<int> PlayerHealth;
+    public float ventCooldown;
 
     public enum PlayerState
     {
         idle,
         move,
+        attack,
         bomb,
-        shoot,
-        punch,
         hurt,
         death
     }
@@ -49,16 +39,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        health = maxHealth;
-
-        healthBar.SetMaxHealth(maxHealth);
-        InitializePlayer?.Invoke(currentAmmo);
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(ventCooldown);
+        VentTimer();
         // Initialize player input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
@@ -80,20 +67,14 @@ public class PlayerController : MonoBehaviour
                 if (horizontalInput != 0 || verticalInput != 0)
                 {
                     state = PlayerState.move;
-                }
-                else if (Input.GetButton("Fire1"))
+                } else if (Input.GetKey(KeyCode.Space))
                 {
-                state = PlayerState.shoot;
-                }
-                else if (Input.GetButton("Fire2"))
+                    state = PlayerState.attack;
+                } else if (Input.GetKeyDown(KeyCode.B) && bombCount > 0)
                 {
-                state = PlayerState.punch;
-                }
-                else if (Input.GetKeyDown(KeyCode.B)) 
-                { 
                     state = PlayerState.bomb;
                 }
-              break;
+                break;
             #endregion
 
             #region Move State
@@ -104,12 +85,9 @@ public class PlayerController : MonoBehaviour
                 if (horizontalInput == 0 && verticalInput == 0)
                 {
                     state = PlayerState.idle;
-                } else if (Input.GetButton("Fire1"))
+                } else if (Input.GetKey(KeyCode.Space))
                 {
-                    state = PlayerState.shoot;
-                } else if (Input.GetButton("Fire2"))
-                {
-                    state = PlayerState.punch;
+                    state = PlayerState.attack;
                 } else
                 {
                     lastX = horizontalInput;
@@ -118,16 +96,13 @@ public class PlayerController : MonoBehaviour
                 break;
             #endregion
 
-            #region Shoot State
-            case PlayerState.shoot:
+            #region Attack State
+            case PlayerState.attack:
                 if (currentAmmo > 0 && currentFireRate <= 0)
                 {
                     // Fire animation
 
                     // Fire
-                    currentAmmo--;
-                    PewPew?.Invoke(currentAmmo);
-
                     float bulletAngle = Mathf.Atan2(lastY, lastX) * Mathf.Rad2Deg;
 
                     if (bulletAngle == 45 || bulletAngle == -45)
@@ -146,51 +121,29 @@ public class PlayerController : MonoBehaviour
 
                     bulletSpawnOffset = new Vector3(bulletPositionX, bulletPositionY);
 
-                    Instantiate(bulletPrefab, transform.position + bulletSpawnOffset, Quaternion.Euler(new Vector3 (0, 0, bulletAngle)));     
-                    
+                    Instantiate(bulletPrefab, transform.position + bulletSpawnOffset, Quaternion.Euler(new Vector3 (0, 0, bulletAngle)));
+
+                    currentAmmo--;
                     currentFireRate = weaponFireRate;
 
                     // Manage state
                     state = PlayerState.idle;
-                }
-                else
+                } else if (currentAmmo <= 0)
                 {
-                    state = PlayerState.idle;
-                }
-                break;
-            #endregion
+                    // Punch animation
 
-            #region Punch State
-            case PlayerState.punch:
-                // Punch animation
+                    // punch
 
-                // punch
+                    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(punchPoint.position, punchRange, enemyLayers);
 
-                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(punchPoint.position, punchRange, enemyLayers);
+                    foreach (Collider2D enemy in hitEnemies)
+                    {
+                        Vector3 knockBack = (enemy.transform.position - punchPoint.position).normalized;
 
-                foreach (Collider2D enemy in hitEnemies)
-                {
-                    Vector3 knockBack = (enemy.transform.position - punchPoint.position).normalized;
+                        enemy.transform.position += knockBack;
+                    }
 
-                    enemy.transform.position += knockBack;
-                }
-
-                // Manage state
-                state = PlayerState.idle;
-                break;
-            #endregion
-
-            #region bomb State
-            case PlayerState.bomb:
-                if (bombCount > 0)
-                {
-                    float bombPositionX = 1.5f * lastX;
-                    float bombPositionY = 1.5f * lastY;
-
-                    bulletSpawnOffset = new Vector3(bombPositionX, bombPositionY);
-                    Instantiate(bomb, transform.position + bulletSpawnOffset, transform.rotation);
-                
-                    bombCount--;
+                    // Manage state
                     state = PlayerState.idle;
                 } else
                 {
@@ -199,12 +152,23 @@ public class PlayerController : MonoBehaviour
                 break;
             #endregion
 
+            #region bomb State
+            case PlayerState.bomb:
+                float bombPositionX = 1.5f * lastX;
+                float bombPositionY = 1.5f * lastY;
+
+                bulletSpawnOffset = new Vector3(bombPositionX, bombPositionY);
+                Instantiate(bomb, transform.position + bulletSpawnOffset, transform.rotation);
+                
+                bombCount--;
+                state = PlayerState.idle;
+                break;
+            #endregion
+
             #region Hurt State
             case PlayerState.hurt:
                 // Play hurt animation
-                health -= 5;
 
-                PlayerHealth?.Invoke(health);
                 // Manage state
                 state = PlayerState.idle;
                 break;
@@ -236,8 +200,6 @@ public class PlayerController : MonoBehaviour
             currentAmmo = collision.GetComponent<WeaponStats>().weaponAmmo;
             weaponFireRate = collision.GetComponent<WeaponStats>().fireRate;
             Destroy(collision.gameObject);
-
-            PewPew?.Invoke(currentAmmo);
         }
         */
         if (Input.GetKey(KeyCode.E))
@@ -258,16 +220,27 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ëxplosion" || collision.gameObject.tag == "EnemyProjectile")
+        if (collision.gameObject.tag == "Ëxplosion")
         {
             // take DMG
             state = PlayerState.hurt;
         }
     }
 
-
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(punchPoint.position, punchRange);
+    }
+
+    private void VentTimer()
+    {
+        if (ventCooldown > 0) 
+        {
+            ventCooldown -= Time.deltaTime;
+        }
+        if (ventCooldown <= 0)
+        {
+            ventCooldown = 0;
+        }
     }
 }

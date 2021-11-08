@@ -11,7 +11,7 @@ public class playerDetector : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.layer == 3)
+        if (other.gameObject.tag == "Player")
         {
             playerInRange = true;
         } else

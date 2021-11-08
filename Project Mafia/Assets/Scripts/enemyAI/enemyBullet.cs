@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
+public class enemyBullet : MonoBehaviour
 {
 
     public float enemyBulletSpeed = 20f;
@@ -24,7 +24,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.layer == 8 || other.gameObject.layer == 3)
+        if (other.gameObject.layer == 0 || other.gameObject.layer == 3)
         {
             Destroy(gameObject);
         }

@@ -26,5 +26,4 @@ public class Bomb : MonoBehaviour
         hitbox.enabled = true;
         Destroy(gameObject, 1);
     }
-
 }

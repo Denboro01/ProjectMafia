@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class EnemyMovement : MonoBehaviour
+public class enemyMovement : MonoBehaviour
 {
 
     public Transform target;
