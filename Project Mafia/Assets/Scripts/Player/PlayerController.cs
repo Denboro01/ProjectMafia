@@ -1,8 +1,11 @@
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
-    private int health = 100;
+    public int maxHealth = 100;
+    public int health;
+
     public int currentAmmo;
     private float bombCount;
     private float currentFireRate;
@@ -23,6 +26,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask enemyLayers;
     public float ventCooldown;
 
+    public HealthBar healthBar;
+
+    public static Action<int> InitializePlayer;
+    public static Action<int> PewPew;
+    public static Action<int> PlayerHealth;
+
     public enum PlayerState
     {
         idle,
@@ -39,12 +48,16 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        health = maxHealth;
+
+        healthBar.SetMaxHealth(maxHealth);
+        InitializePlayer?.Invoke(currentAmmo);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(ventCooldown);
         VentTimer();
         // Initialize player input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -124,6 +137,8 @@ public class PlayerController : MonoBehaviour
                     Instantiate(bulletPrefab, transform.position + bulletSpawnOffset, Quaternion.Euler(new Vector3 (0, 0, bulletAngle)));
 
                     currentAmmo--;
+                    PewPew?.Invoke(currentAmmo);
+
                     currentFireRate = weaponFireRate;
 
                     // Manage state
@@ -168,6 +183,10 @@ public class PlayerController : MonoBehaviour
             #region Hurt State
             case PlayerState.hurt:
                 // Play hurt animation
+
+                health -= 5;
+
+                PlayerHealth?.Invoke(health);
 
                 // Manage state
                 state = PlayerState.idle;
@@ -220,7 +239,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ëxplosion")
+        if (collision.gameObject.tag == "Explosion")
         {
             // take DMG
             state = PlayerState.hurt;
