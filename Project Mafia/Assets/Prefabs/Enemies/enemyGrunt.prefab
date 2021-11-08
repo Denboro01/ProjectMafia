@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4708743303073489446}
   - component: {fileID: 6549730677497198229}
   - component: {fileID: 3637923126939270036}
-  - component: {fileID: 148805135296522075}
+  - component: {fileID: 4578171204796612641}
   m_Layer: 6
   m_Name: enemyGrunt
   m_TagString: Untagged
@@ -50,7 +50,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 1.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7417c9afb2021f43a4d000fdcadf817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: 0
   player: {fileID: 0}
   enemyFirePoint: {fileID: 5380632918061677238}
   lastPlayerPosition: {x: 0, y: 0, z: 0}
@@ -109,7 +110,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 5121691146572152553, guid: f9a37cd5a6cfcc242af453ded6cba394, type: 3}
   wallLayerMask:
     serializedVersion: 2
-    m_Bits: 257
+    m_Bits: 265
 --- !u!114 &3637923126939270036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,8 +130,8 @@ MonoBehaviour:
   enemySpeed: 100
   nextWaypointDistance: 1
   direction: {x: 0, y: 0}
---- !u!61 &148805135296522075
-BoxCollider2D:
+--- !u!58 &4578171204796612641
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -143,18 +144,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.7
 --- !u!1 &4787811250058761870
 GameObject:
   m_ObjectHideFlags: 0

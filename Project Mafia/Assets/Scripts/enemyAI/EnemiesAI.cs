@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemiesAI : MonoBehaviour
 {
+    public int enemyHealth;
+
     public GameObject player;
     public Transform enemyFirePoint;
     public Vector3 lastPlayerPosition;
@@ -21,6 +23,7 @@ public class EnemiesAI : MonoBehaviour
 
     void Start()
     {
+        enemyHealth = 6;
         timer = 2;
 
         enemyMovement = GetComponent<enemyMovement>();
@@ -40,6 +43,14 @@ public class EnemiesAI : MonoBehaviour
             lastPlayerPosition = player.transform.position;
             startPathing = true;
             playerSeen = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (enemyHealth <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -102,6 +113,34 @@ public class EnemiesAI : MonoBehaviour
             Instantiate(enemyBullet, enemyFirePoint.position, rotation);
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "PunchPoint")
+        {
+            if (playerSeen)
+            {
+                Destroy(gameObject);
+            } else
+            {
+                enemyHealth -= 1;
+            }
+        }
+        if (collision.gameObject.tag == "Explosion")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "PlayerBullet")
+        {
+            enemyHealth -= 3;
+            Destroy(collision.gameObject);
+
+        }
     }
 
 
