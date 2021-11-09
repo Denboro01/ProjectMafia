@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2197431762594187829}
   m_Layer: 0
   m_Name: PunchPoint
-  m_TagString: Untagged
+  m_TagString: PunchPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,7 +144,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.8
 --- !u!1 &7058945652594282272
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
   bomb: {fileID: 3297769290404908435, guid: 2263547b4eeec1a4db6b21c72768a6a3, type: 3}
   punchPointCollider: {fileID: 2197431762594187829}
   punchPoint: {fileID: 7058945651679582262}
-  punchRange: 0.6
+  punchRange: 0.8
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64

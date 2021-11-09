@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private float lastX;
     private float lastY;
     private float iFrameTimer;
+    private float punchTimer;
 
     private Rigidbody2D rb;
 
@@ -79,7 +80,7 @@ public class PlayerController : MonoBehaviour
             #region Idle State
             case PlayerState.idle:
                 // Play idle animation
-                punchPointCollider.enabled = true;
+                punchPointCollider.enabled = false;
                 // Manage state
                 if (horizontalInput != 0 || verticalInput != 0)
                 {
@@ -89,7 +90,7 @@ public class PlayerController : MonoBehaviour
                 {
                     state = PlayerState.shoot;
                 }
-                else if (Input.GetButton("Fire2")) 
+                else if (Input.GetButtonDown("Fire2")) 
                 {
                     state = PlayerState.punch;
                 }
@@ -172,26 +173,22 @@ public class PlayerController : MonoBehaviour
 
                 // punch
 
-                /*
-                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(punchPoint.position, punchRange, enemyLayers);
-                
-                foreach (Collider2D enemy in hitEnemies)
+                if (punchTimer <= 0)
                 {
-                    Vector3 knockBack = (enemy.transform.position - punchPoint.position).normalized;
-                    enemy.transform.position += knockBack;
+                    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(punchPoint.position, punchRange, enemyLayers);
+                    foreach (Collider2D enemy in hitEnemies)
+                    {
+                        punchPointCollider.enabled = true;
+                        if (enemy.attachedRigidbody != null)
+                        {
+                            Vector2 knockBack = (enemy.transform.position - punchPoint.position).normalized;
+                            enemy.attachedRigidbody.AddForce(knockBack * punchMultiplier);
+                        }
+                    }
+                    punchTimer = 0.5f;
                 }
-                */
-                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(punchPoint.position, punchRange, enemyLayers);
-                foreach (Collider2D enemy in hitEnemies)
-                {
-                    Vector2 knockBack = (enemy.transform.position - punchPoint.position).normalized;
-                    punchPointCollider.enabled = true;
-                    enemy.attachedRigidbody.AddForce(knockBack * punchMultiplier);
-                }
-
-
-                // Manage state
                 state = PlayerState.idle;
+                // Manage state
                 break;
             #endregion
 
@@ -278,11 +275,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(punchPoint.position, punchRange);
-    }
-
+    
     private void Timers()
     {
         if (ventCooldown > 0) 
@@ -302,5 +295,22 @@ public class PlayerController : MonoBehaviour
         {
             iFrameTimer = 0;
         }
+
+        if (punchTimer > 0)
+        {
+            punchTimer -= Time.deltaTime;
+        }
+        if (punchTimer <= 0)
+        {
+            punchTimer = 0;
+        }
     }
+
+    /*
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(punchPoint.position, punchRange);
+    }
+    */
+
 }

@@ -115,11 +115,11 @@ public class EnemiesAI : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "PunchPoint")
         {
-            if (playerSeen)
+            if (!playerDetector.playerInRange)
             {
                 Destroy(gameObject);
             } else
@@ -127,6 +127,10 @@ public class EnemiesAI : MonoBehaviour
                 enemyHealth -= 1;
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.tag == "Explosion")
         {
             Destroy(gameObject);
@@ -139,7 +143,6 @@ public class EnemiesAI : MonoBehaviour
         {
             enemyHealth -= 3;
             Destroy(collision.gameObject);
-
         }
     }
 

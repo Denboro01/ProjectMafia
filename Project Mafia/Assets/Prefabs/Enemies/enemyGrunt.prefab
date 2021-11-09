@@ -322,12 +322,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6970790635808639821, guid: e8241a84726190f4aa3d263175589070, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970790635808639821, guid: e8241a84726190f4aa3d263175589070, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6970790635808639821, guid: e8241a84726190f4aa3d263175589070, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970790635808639821, guid: e8241a84726190f4aa3d263175589070, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8083605773216087256, guid: e8241a84726190f4aa3d263175589070, type: 3}
       propertyPath: enemyToDetectFor
