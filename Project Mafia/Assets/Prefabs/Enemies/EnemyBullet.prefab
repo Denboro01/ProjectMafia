@@ -127,6 +127,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4418770221078128605, guid: 7840645e8cf9c824d9d951d4973b3503, type: 3}
+      propertyPath: m_TagString
+      value: EnemyProjectile
+      objectReference: {fileID: 0}
     - target: {fileID: 4634000761646760383, guid: 7840645e8cf9c824d9d951d4973b3503, type: 3}
       propertyPath: m_FlipX
       value: 0

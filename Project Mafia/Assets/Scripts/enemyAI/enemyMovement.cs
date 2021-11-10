@@ -16,10 +16,21 @@ public class enemyMovement : MonoBehaviour
     [SerializeField] private float enemySpeed = 200f;
     [SerializeField] private float nextWaypointDistance = 0.5f;
 
+    [SerializeField]
+    private SpriteRenderer spriteLeft;
+    [SerializeField]
+    private SpriteRenderer spriteRight;
+    [SerializeField]
+    private SpriteRenderer spriteUp;
+    [SerializeField]
+    private SpriteRenderer spriteBottom;
+
+
     private int currentWaypoint;
     private Vector3 lastPosition;
     private float rotateTimer;
     private bool Turn;
+    private float turnCounter;
 
     private bool rotationHasReset;
     public Vector2 direction;
@@ -62,7 +73,7 @@ public class enemyMovement : MonoBehaviour
                 LookAround();
                 if (!rotationHasReset)
                 {
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    //transform.rotation = Quaternion.Euler(0, 0, 0);
                     rotationHasReset = true;
                 }
 
@@ -123,36 +134,78 @@ public class enemyMovement : MonoBehaviour
 
     private void LookForPlayer()
     {
-        /*
-        Vector3 tempDirection = new Vector3(force.x * enemySpeed, force.y * enemySpeed);
-        Vector3 dir = tempDirection - transform.position;
-
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        */
 
         // if it works...
         if (rotation.x > 0 && rotation.x > rotation.y)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            //transform.rotation = Quaternion.Euler(0, 0, 0);
+            spriteBottom.enabled = false;
+            spriteLeft.enabled = false;
+            spriteRight.enabled = true;
+            spriteUp.enabled = false;
         }
         if (rotation.y > 0 && rotation.y > rotation.x)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 90);
+            //transform.rotation = Quaternion.Euler(0, 0, 90);
+            spriteBottom.enabled = true;
+            spriteLeft.enabled = false;
+            spriteRight.enabled = false;
+            spriteUp.enabled = false;
         }
         if (rotation.x < 0 && -rotation.x > rotation.y)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 180);
+            //transform.rotation = Quaternion.Euler(0, 0, 180);
+            spriteBottom.enabled = false;
+            spriteLeft.enabled = false;
+            spriteRight.enabled = false;
+            spriteUp.enabled = true;
         }
         if (rotation.y < 0 && -rotation.y > rotation.x)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 270);
+            //transform.rotation = Quaternion.Euler(0, 0, 270);
+            spriteBottom.enabled = false;
+            spriteLeft.enabled = true;
+            spriteRight.enabled = false;
+            spriteUp.enabled = false;
         }
 
 
     }
-
+    private void Update()
+    {
+        if (turnCounter == 0)
+        {
+            //transform.rotation = Quaternion.Euler(0, 0, 0);
+            spriteBottom.enabled = false;
+            spriteLeft.enabled = false;
+            spriteRight.enabled = true;
+            spriteUp.enabled = false;
+        }
+        if (turnCounter == 1)
+        {
+            //transform.rotation = Quaternion.Euler(0, 0, 90);
+            spriteBottom.enabled = true;
+            spriteLeft.enabled = false;
+            spriteRight.enabled = false;
+            spriteUp.enabled = false;
+        }
+        if (turnCounter == 2)
+        {
+            //transform.rotation = Quaternion.Euler(0, 0, 180);
+            spriteBottom.enabled = false;
+            spriteLeft.enabled = false;
+            spriteRight.enabled = false;
+            spriteUp.enabled = true;
+        }
+        if (turnCounter == 3)
+        {
+            //transform.rotation = Quaternion.Euler(0, 0, 270);
+            spriteBottom.enabled = false;
+            spriteLeft.enabled = true;
+            spriteRight.enabled = false;
+            spriteUp.enabled = false;
+        }
+    }
 
     private void LookAround()
     {
@@ -170,7 +223,11 @@ public class enemyMovement : MonoBehaviour
 
         if (Turn)
         {
-            transform.Rotate(0, 0, 90f);
+            turnCounter++;
+            if (turnCounter == 4)
+            {
+                turnCounter = 0;
+            }
         }
     }
 }

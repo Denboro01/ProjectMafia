@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class WeaponStats : MonoBehaviour
 {
-    public int weaponAmmo = 10;
-    public float fireRate = 0.5f;
+    public int weaponAmmo;
+    public float fireRate;
+    public int health;
+    public bool isFood;
 }

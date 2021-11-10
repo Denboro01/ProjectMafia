@@ -11,17 +11,20 @@ TagManager:
   - Bomb
   - Explosion
   - Barricade
+  - EnemyProjectile
+  - PlayerPunchPoint
+  - PunchPoint
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Level
   - Water
   - UI
   - Enemy
   - Background
   - Projectiles
-  - 
+  - Player
   - 
   - 
   - 
