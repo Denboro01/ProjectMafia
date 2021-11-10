@@ -265,10 +265,19 @@ public class PlayerController : MonoBehaviour
                 if (collision.GetComponent<WeaponStats>().isFood)
                 {
                     health += collision.GetComponent<WeaponStats>().health;
+
+                    if (health > maxHealth)
+                    {
+                        health = maxHealth;
+                    }
+
+                    PlayerHealth?.Invoke(health);
                 } else
                 {
                     currentAmmo = collision.GetComponent<WeaponStats>().weaponAmmo;
                     weaponFireRate = collision.GetComponent<WeaponStats>().fireRate;
+
+                    PewPew?.Invoke(currentAmmo);
                 }
                 Destroy(collision.gameObject);
             }
