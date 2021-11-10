@@ -468,6 +468,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7058945652594282278, guid: 2e9b1a6b09ba69b4d89497a7f2dcd1e3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058945652594282278, guid: 2e9b1a6b09ba69b4d89497a7f2dcd1e3, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058945652594282279, guid: 2e9b1a6b09ba69b4d89497a7f2dcd1e3, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 7058945651566046374}
     - target: {fileID: 7058945652594282283, guid: 2e9b1a6b09ba69b4d89497a7f2dcd1e3, type: 3}
       propertyPath: m_RootOrder
       value: 3
