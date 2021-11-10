@@ -54,6 +54,9 @@ TagManager:
   - name: Walls
     uniqueID: 2962150385
     locked: 0
+  - name: table object
+    uniqueID: 1877716139
+    locked: 0
   - name: OBJECTS
     uniqueID: 181280165
     locked: 0
