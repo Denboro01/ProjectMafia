@@ -75,3 +75,6 @@ TagManager:
   - name: Particles
     uniqueID: 3924926439
     locked: 0
+  - name: Commands
+    uniqueID: 2379976833
+    locked: 0
