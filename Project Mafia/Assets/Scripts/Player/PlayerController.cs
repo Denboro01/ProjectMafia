@@ -38,6 +38,9 @@ public class PlayerController : MonoBehaviour
     public static Action<int> PewPew;
     public static Action<int> PlayerHealth;
 
+    public static Action<string> Punch;
+    public static Action<string> Shoot;
+
     public enum PlayerState
     {
         idle,
@@ -57,8 +60,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         health = maxHealth;
-
-        Debug.Log("pussy");
 
         healthBar.SetMaxHealth(maxHealth);
         InitializePlayer?.Invoke(currentAmmo);
@@ -93,7 +94,7 @@ public class PlayerController : MonoBehaviour
                 {
                     state = PlayerState.move;
                 }
-                else if (Input.GetButtonDown("Fire1") && currentAmmo > 0)
+                else if (Input.GetButtonDown("Fire1") && currentAmmo > 0 && currentFireRate <= 0)
                 {
                     anim.SetTrigger("idleShoot");
                     state = PlayerState.shoot;
@@ -120,7 +121,7 @@ public class PlayerController : MonoBehaviour
                 {
                     state = PlayerState.idle;
                 }
-                else if (Input.GetButtonDown("Fire1") && currentAmmo > 0)
+                else if (Input.GetButtonDown("Fire1") && currentAmmo > 0 && currentFireRate <= 0)
                 {
                     anim.SetTrigger("moveShoot");
                     state = PlayerState.shoot;
@@ -167,6 +168,8 @@ public class PlayerController : MonoBehaviour
                     currentAmmo--;
                     PewPew?.Invoke(currentAmmo);
 
+                    Shoot?.Invoke("Fire");
+
                     currentFireRate = weaponFireRate;
 
                     // Manage state
@@ -197,6 +200,9 @@ public class PlayerController : MonoBehaviour
                             enemy.attachedRigidbody.AddForce(knockBack * punchMultiplier);
                         }
                     }
+
+                    Punch?.Invoke("Punch");
+
                     punchTimer = 0.5f;
                 }
                 state = PlayerState.idle;

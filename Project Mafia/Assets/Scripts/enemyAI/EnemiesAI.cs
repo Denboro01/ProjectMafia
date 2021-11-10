@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemiesAI : MonoBehaviour
 {
     public int enemyHealth;
+    public int enemyMaxHealth;
 
     public GameObject player;
     public Transform enemyFirePoint;
@@ -23,7 +24,7 @@ public class EnemiesAI : MonoBehaviour
 
     void Start()
     {
-        enemyHealth = 6;
+        enemyHealth = enemyMaxHealth;
         timer = 2;
 
         enemyMovement = GetComponent<enemyMovement>();
