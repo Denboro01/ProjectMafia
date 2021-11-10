@@ -460,6 +460,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6605935862000799757, guid: 2e9b1a6b09ba69b4d89497a7f2dcd1e3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7058945652594282272, guid: 2e9b1a6b09ba69b4d89497a7f2dcd1e3, type: 3}
       propertyPath: m_Name
       value: Player
@@ -555,7 +559,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 295ca8ce0f4d5e4439037141811e60b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
