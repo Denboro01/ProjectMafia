@@ -91,8 +91,9 @@ public class PlayerController : MonoBehaviour
                 {
                     state = PlayerState.move;
                 }
-                else if (Input.GetButton("Fire1"))
+                else if (Input.GetButtonDown("Fire1") && currentAmmo > 0)
                 {
+                    anim.SetTrigger("idleShoot");
                     state = PlayerState.shoot;
                 }
                 else if (Input.GetButtonDown("Fire2"))
@@ -117,8 +118,9 @@ public class PlayerController : MonoBehaviour
                 {
                     state = PlayerState.idle;
                 }
-                else if (Input.GetButton("Fire1"))
+                else if (Input.GetButtonDown("Fire1") && currentAmmo > 0)
                 {
+                    anim.SetTrigger("moveShoot");
                     state = PlayerState.shoot;
                 }
                 else if (Input.GetButton("Fire2"))
@@ -135,7 +137,7 @@ public class PlayerController : MonoBehaviour
 
             #region Shoot State
             case PlayerState.shoot:
-                if (currentAmmo > 0 && currentFireRate <= 0)
+                if (currentFireRate <= 0)
                 {
                     // Fire animation
 
@@ -260,8 +262,23 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.tag == "Weapon")
             {
-                currentAmmo = collision.GetComponent<WeaponStats>().weaponAmmo;
-                weaponFireRate = collision.GetComponent<WeaponStats>().fireRate;
+                if (collision.GetComponent<WeaponStats>().isFood)
+                {
+                    health += collision.GetComponent<WeaponStats>().health;
+
+                    if (health > maxHealth)
+                    {
+                        health = maxHealth;
+                    }
+
+                    PlayerHealth?.Invoke(health);
+                } else
+                {
+                    currentAmmo = collision.GetComponent<WeaponStats>().weaponAmmo;
+                    weaponFireRate = collision.GetComponent<WeaponStats>().fireRate;
+
+                    PewPew?.Invoke(currentAmmo);
+                }
                 Destroy(collision.gameObject);
             }
             if (collision.gameObject.tag == "Bomb")
