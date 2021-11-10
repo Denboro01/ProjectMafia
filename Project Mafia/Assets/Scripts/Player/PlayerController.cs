@@ -262,8 +262,14 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.tag == "Weapon")
             {
-                currentAmmo = collision.GetComponent<WeaponStats>().weaponAmmo;
-                weaponFireRate = collision.GetComponent<WeaponStats>().fireRate;
+                if (collision.GetComponent<WeaponStats>().isFood)
+                {
+                    health += collision.GetComponent<WeaponStats>().health;
+                } else
+                {
+                    currentAmmo = collision.GetComponent<WeaponStats>().weaponAmmo;
+                    weaponFireRate = collision.GetComponent<WeaponStats>().fireRate;
+                }
                 Destroy(collision.gameObject);
             }
             if (collision.gameObject.tag == "Bomb")
