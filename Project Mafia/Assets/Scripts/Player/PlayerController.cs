@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask enemyLayers;
     public float ventCooldown;
 
+    public Animator anim;
+
     public enum PlayerState
     {
         idle,
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
         // Initialize player input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
+
         movement = new Vector2(horizontalInput, verticalInput).normalized;
 
         if (currentFireRate > 0)
@@ -62,6 +65,9 @@ public class PlayerController : MonoBehaviour
             #region Idle State
             case PlayerState.idle:
                 // Play idle animation
+                anim.SetFloat("lastX", lastX);
+                anim.SetFloat("lastY", lastY);
+                anim.SetFloat("speed", movement.sqrMagnitude);
 
                 // Manage state
                 if (horizontalInput != 0 || verticalInput != 0)
@@ -80,6 +86,9 @@ public class PlayerController : MonoBehaviour
             #region Move State
             case PlayerState.move:
                 // Play movement animation
+                anim.SetFloat("horizontal", horizontalInput);
+                anim.SetFloat("vertical", verticalInput);
+                anim.SetFloat("speed", movement.sqrMagnitude);
 
                 // Manage state
                 if (horizontalInput == 0 && verticalInput == 0)
@@ -181,6 +190,14 @@ public class PlayerController : MonoBehaviour
                 #endregion
         }
         #endregion
+
+        if (currentAmmo > 0)
+        {
+            anim.SetBool("gotGun", true);
+        } else
+        {
+            anim.SetBool("gotGun", false);
+        }
 
         if (health <= 0 && state != PlayerState.death)
         {
