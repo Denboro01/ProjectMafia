@@ -17,12 +17,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 6)
-        {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.layer == 0)
+        if (collision.gameObject.layer == 0 || collision.gameObject.layer == 3)
         {
             Destroy(gameObject);
         }

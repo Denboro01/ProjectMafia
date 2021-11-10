@@ -14,17 +14,21 @@ public class PlayerController : MonoBehaviour
     private float movementSpeed = 200f;
     private float lastX;
     private float lastY;
+    private float iFrameTimer;
+    private float punchTimer;
 
     private Rigidbody2D rb;
 
     private Vector3 bulletSpawnOffset;
     public GameObject bulletPrefab;
     public GameObject bomb;
+    public Collider2D punchPointCollider;
 
     public Transform punchPoint;
     public float punchRange = 0.75f;
     public LayerMask enemyLayers;
     public float ventCooldown;
+    public float punchMultiplier;
 
     public HealthBar healthBar;
 
@@ -36,7 +40,8 @@ public class PlayerController : MonoBehaviour
     {
         idle,
         move,
-        attack,
+        shoot,
+        punch,
         bomb,
         hurt,
         death
@@ -58,7 +63,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        VentTimer();
+        Timers();
         // Initialize player input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
@@ -75,15 +80,21 @@ public class PlayerController : MonoBehaviour
             #region Idle State
             case PlayerState.idle:
                 // Play idle animation
-
+                punchPointCollider.enabled = false;
                 // Manage state
                 if (horizontalInput != 0 || verticalInput != 0)
                 {
                     state = PlayerState.move;
-                } else if (Input.GetKey(KeyCode.Space))
+                }
+                else if (Input.GetButton("Fire1"))
                 {
-                    state = PlayerState.attack;
-                } else if (Input.GetKeyDown(KeyCode.B) && bombCount > 0)
+                    state = PlayerState.shoot;
+                }
+                else if (Input.GetButtonDown("Fire2")) 
+                {
+                    state = PlayerState.punch;
+                }
+                else if (Input.GetKeyDown(KeyCode.B) && bombCount > 0)
                 {
                     state = PlayerState.bomb;
                 }
@@ -98,10 +109,16 @@ public class PlayerController : MonoBehaviour
                 if (horizontalInput == 0 && verticalInput == 0)
                 {
                     state = PlayerState.idle;
-                } else if (Input.GetKey(KeyCode.Space))
+                }
+                else if (Input.GetButton("Fire1"))
                 {
-                    state = PlayerState.attack;
-                } else
+                    state = PlayerState.shoot;
+                }
+                else if (Input.GetButton("Fire2"))
+                {
+                    state = PlayerState.punch;
+                }
+                else
                 {
                     lastX = horizontalInput;
                     lastY = verticalInput;
@@ -109,8 +126,8 @@ public class PlayerController : MonoBehaviour
                 break;
             #endregion
 
-            #region Attack State
-            case PlayerState.attack:
+            #region Shoot State
+            case PlayerState.shoot:
                 if (currentAmmo > 0 && currentFireRate <= 0)
                 {
                     // Fire animation
@@ -143,27 +160,35 @@ public class PlayerController : MonoBehaviour
 
                     // Manage state
                     state = PlayerState.idle;
-                } else if (currentAmmo <= 0)
-                {
-                    // Punch animation
-
-                    // punch
-
-                    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(punchPoint.position, punchRange, enemyLayers);
-
-                    foreach (Collider2D enemy in hitEnemies)
-                    {
-                        Vector3 knockBack = (enemy.transform.position - punchPoint.position).normalized;
-
-                        enemy.transform.position += knockBack;
-                    }
-
-                    // Manage state
-                    state = PlayerState.idle;
                 } else
                 {
                     state = PlayerState.idle;
                 }
+                break;
+            #endregion
+
+            #region Punch State
+            case PlayerState.punch:
+                // Punch animation
+
+                // punch
+
+                if (punchTimer <= 0)
+                {
+                    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(punchPoint.position, punchRange, enemyLayers);
+                    foreach (Collider2D enemy in hitEnemies)
+                    {
+                        punchPointCollider.enabled = true;
+                        if (enemy.attachedRigidbody != null)
+                        {
+                            Vector2 knockBack = (enemy.transform.position - punchPoint.position).normalized;
+                            enemy.attachedRigidbody.AddForce(knockBack * punchMultiplier);
+                        }
+                    }
+                    punchTimer = 0.5f;
+                }
+                state = PlayerState.idle;
+                // Manage state
                 break;
             #endregion
 
@@ -184,7 +209,6 @@ public class PlayerController : MonoBehaviour
             case PlayerState.hurt:
                 // Play hurt animation
 
-                health -= 5;
 
                 PlayerHealth?.Invoke(health);
 
@@ -195,6 +219,7 @@ public class PlayerController : MonoBehaviour
 
             #region Death State
             case PlayerState.death:
+                Debug.Log("U ded. RIP");
                 Destroy(gameObject);
                 break;
                 #endregion
@@ -214,13 +239,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        /*
-        if (collision.gameObject.tag == "Weapon" && Input.GetKey(KeyCode.E)) {
-            currentAmmo = collision.GetComponent<WeaponStats>().weaponAmmo;
-            weaponFireRate = collision.GetComponent<WeaponStats>().fireRate;
-            Destroy(collision.gameObject);
-        }
-        */
         if (Input.GetKey(KeyCode.E))
         {
             if (collision.gameObject.tag == "Weapon")
@@ -239,19 +257,26 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Explosion")
+        if (iFrameTimer <= 0)
         {
-            // take DMG
-            state = PlayerState.hurt;
+            if (collision.gameObject.tag == "Explosion")
+            {
+                iFrameTimer = 0.1f;
+                health -= 50;
+                state = PlayerState.hurt;
+            }
+            if (collision.gameObject.tag == "EnemyProjectile")
+            {
+                iFrameTimer = 0.1f;
+                health -= 20;
+                state = PlayerState.hurt;
+            }
         }
+        
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(punchPoint.position, punchRange);
-    }
-
-    private void VentTimer()
+    
+    private void Timers()
     {
         if (ventCooldown > 0) 
         {
@@ -261,5 +286,31 @@ public class PlayerController : MonoBehaviour
         {
             ventCooldown = 0;
         }
+
+        if (iFrameTimer > 0)
+        {
+            iFrameTimer -= Time.deltaTime;
+        }
+        if (iFrameTimer <= 0)
+        {
+            iFrameTimer = 0;
+        }
+
+        if (punchTimer > 0)
+        {
+            punchTimer -= Time.deltaTime;
+        }
+        if (punchTimer <= 0)
+        {
+            punchTimer = 0;
+        }
     }
+
+    /*
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(punchPoint.position, punchRange);
+    }
+    */
+
 }

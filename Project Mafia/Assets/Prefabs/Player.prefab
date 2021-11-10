@@ -92,9 +92,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7058945651679582262}
   - component: {fileID: 7058945651679582261}
+  - component: {fileID: 2197431762594187829}
   m_Layer: 0
   m_Name: PunchPoint
-  m_TagString: Untagged
+  m_TagString: PunchPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,6 +129,22 @@ MonoBehaviour:
   player: {fileID: 7058945652594282283}
   offset: {x: 0, y: 0, z: 0}
   offsetValue: 0.75
+--- !u!58 &2197431762594187829
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7058945651679582263}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.8
 --- !u!1 &7058945652594282272
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,13 +239,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663a5ac26498c8c48bdb27c94ffec799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  health: 0
   currentAmmo: 0
   bulletPrefab: {fileID: 4418770221078128605, guid: 7840645e8cf9c824d9d951d4973b3503, type: 3}
   bomb: {fileID: 3297769290404908435, guid: 2263547b4eeec1a4db6b21c72768a6a3, type: 3}
+  punchPointCollider: {fileID: 2197431762594187829}
   punchPoint: {fileID: 7058945651679582262}
-  punchRange: 0.4
+  punchRange: 0.8
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
   ventCooldown: 0
+  punchMultiplier: 60
+  healthBar: {fileID: 0}
   state: 0
