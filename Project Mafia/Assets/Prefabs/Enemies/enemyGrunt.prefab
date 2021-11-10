@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 0
   enemyMaxHealth: 6
-  player: {fileID: 0}
+  player: {fileID: 7058945652594282272, guid: 2e9b1a6b09ba69b4d89497a7f2dcd1e3, type: 3}
   enemyFirePoint: {fileID: 5380632918061677238}
   lastPlayerPosition: {x: 0, y: 0, z: 0}
   playerDetector: {fileID: 6921419647594198990}

@@ -5,7 +5,10 @@ using Pathfinding;
 
 public class Barrel : MonoBehaviour
 {
-    public GameObject bomb; 
+    public GameObject bomb;
+    public GameObject item;
+    public GameObject gun;
+    public int randomNumber;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -24,11 +27,18 @@ public class Barrel : MonoBehaviour
         }
     }
 
-    private void Destroyed()
+    public void Destroyed()
     {
-        if (Random.Range(0, 3) == 2)
+        randomNumber = Random.Range(0, 3);
+        if (randomNumber == 2)
         {
             Instantiate(bomb, transform.position, transform.rotation);
+        } else if (randomNumber == 1)
+        {
+            Instantiate(item, transform.position, transform.rotation);
+        } else
+        {
+            Instantiate(gun, transform.position, transform.rotation);
         }
         Destroy(gameObject);
     }

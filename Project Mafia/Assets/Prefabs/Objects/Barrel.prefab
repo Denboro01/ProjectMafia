@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 481311455140592500}
   - component: {fileID: 5186790354187415872}
   - component: {fileID: -9157406435953614167}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,6 +94,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomb: {fileID: 3217763333632865792, guid: 00d116b5361c01b4ca127e2ee4f28f4b, type: 3}
+  item: {fileID: 7253791324501539058, guid: e8d22db5a42af1e4d9ff672c4e64300c, type: 3}
+  gun: {fileID: 3123389799488536218, guid: eb44677970a09eb4fa4d1787d5b3186e, type: 3}
+  randomNumber: 0
 --- !u!1 &8440745780107489543
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8948772582453654320}
   - component: {fileID: 2432498716045333127}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: barrel mafia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +166,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 181280165
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 42e1e5bde72c572429480d7e2dcdabb8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

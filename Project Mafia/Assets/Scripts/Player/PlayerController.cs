@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask enemyLayers;
     public float ventCooldown;
     public float punchMultiplier;
+    public LayerMask barrelLayers;
 
     public HealthBar healthBar;
 
@@ -199,6 +200,13 @@ public class PlayerController : MonoBehaviour
                             Vector2 knockBack = (enemy.transform.position - punchPoint.position).normalized;
                             enemy.attachedRigidbody.AddForce(knockBack * punchMultiplier);
                         }
+                    }
+
+                    Collider2D[] hitBarrels = Physics2D.OverlapCircleAll(punchPoint.position, punchRange, barrelLayers);
+                    foreach (Collider2D barrel in hitBarrels)
+                    {
+                        punchPointCollider.enabled = true;
+                        barrel.gameObject.GetComponent<Barrel>().Destroyed();
                     }
 
                     Punch?.Invoke("Punch");
