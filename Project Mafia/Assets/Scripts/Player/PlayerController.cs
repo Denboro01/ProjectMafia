@@ -191,6 +191,14 @@ public class PlayerController : MonoBehaviour
         }
         #endregion
 
+        if (currentAmmo > 0)
+        {
+            anim.SetBool("gotGun", true);
+        } else
+        {
+            anim.SetBool("gotGun", false);
+        }
+
         if (health <= 0 && state != PlayerState.death)
         {
             state = PlayerState.death;
