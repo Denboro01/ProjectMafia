@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 100;
     public int health;
 
-    public int currentAmmo;
+    public int currentAmmo = 0;
     private float bombCount;
     private float currentFireRate;
     private float weaponFireRate;
@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         health = maxHealth;
+
+        Debug.Log("pussy");
 
         healthBar.SetMaxHealth(maxHealth);
         InitializePlayer?.Invoke(currentAmmo);
