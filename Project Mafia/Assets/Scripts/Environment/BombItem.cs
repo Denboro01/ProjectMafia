@@ -13,6 +13,12 @@ public class BombItem : MonoBehaviour
     [SerializeField]
     Collider2D hitbox;
 
+    [SerializeField]
+    Collider2D c;
+
+    [SerializeField]
+    Collider2D pickUpCollider;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "PlayerBullet")
@@ -34,6 +40,8 @@ public class BombItem : MonoBehaviour
     {
         particles.Play();
         sprite.enabled = false;
+        pickUpCollider.enabled = false;
+        c.enabled = false;
         hitbox.enabled = true;
         Destroy(gameObject, 1);
     }

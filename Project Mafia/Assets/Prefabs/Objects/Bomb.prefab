@@ -149,6 +149,8 @@ MonoBehaviour:
   particles: {fileID: 7521466445754255920}
   sprite: {fileID: 6308285494916869619}
   hitbox: {fileID: 5787973696788619634}
+  c: {fileID: 1276660309275247095}
+  pickUpCollider: {fileID: 7329138167598559272}
 --- !u!50 &7827850128716166633
 Rigidbody2D:
   serializedVersion: 4
@@ -185,7 +187,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
 --- !u!1 &4658136749406435039
 GameObject:
   m_ObjectHideFlags: 0

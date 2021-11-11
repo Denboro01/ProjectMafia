@@ -149,25 +149,25 @@ public class enemyMovement : MonoBehaviour
         }
         if (rotation.y > 0 && rotation.y > rotation.x)
         {
-            playerDetector.transform.rotation = Quaternion.Euler(0, 0, 270);
-            spriteBottom.enabled = true;
-            spriteLeft.enabled = false;
-            spriteRight.enabled = false;
-            spriteUp.enabled = false;
-        }
-        if (rotation.x < 0 && -rotation.x > rotation.y)
-        {
             playerDetector.transform.rotation = Quaternion.Euler(0, 0, 90);
             spriteBottom.enabled = false;
             spriteLeft.enabled = false;
             spriteRight.enabled = false;
             spriteUp.enabled = true;
         }
-        if (rotation.y < 0 && -rotation.y > rotation.x)
+        if (rotation.x < 0 && -rotation.x > rotation.y)
         {
             playerDetector.transform.rotation = Quaternion.Euler(0, 0, 180);
             spriteBottom.enabled = false;
             spriteLeft.enabled = true;
+            spriteRight.enabled = false;
+            spriteUp.enabled = false;
+        }
+        if (rotation.y < 0 && -rotation.y > rotation.x)
+        {
+            playerDetector.transform.rotation = Quaternion.Euler(0, 0, 270);
+            spriteBottom.enabled = true;
+            spriteLeft.enabled = false;
             spriteRight.enabled = false;
             spriteUp.enabled = false;
         }
