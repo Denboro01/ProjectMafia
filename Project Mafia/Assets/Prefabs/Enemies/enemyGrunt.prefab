@@ -219,6 +219,7 @@ MonoBehaviour:
   spriteRight: {fileID: 1223301376446251583}
   spriteUp: {fileID: 675590872957298934}
   spriteBottom: {fileID: 8473702638892843291}
+  playerDetector: {fileID: 1119470324073246192}
   direction: {x: 0, y: 0}
 --- !u!58 &4578171204796612641
 CircleCollider2D:
@@ -598,6 +599,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7211234283868474591, guid: e8241a84726190f4aa3d263175589070, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e8241a84726190f4aa3d263175589070, type: 3}
+--- !u!1 &1119470324073246192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2281713903051187942, guid: e8241a84726190f4aa3d263175589070, type: 3}
+  m_PrefabInstance: {fileID: 1162895040173148950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5614478282528846489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6758157707604359567, guid: e8241a84726190f4aa3d263175589070, type: 3}
@@ -608,7 +614,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8083605773216087256, guid: e8241a84726190f4aa3d263175589070, type: 3}
   m_PrefabInstance: {fileID: 1162895040173148950}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1119470324073246192}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36316467e1366ff46996d717b658dfb4, type: 3}

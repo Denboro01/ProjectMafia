@@ -25,6 +25,9 @@ public class enemyMovement : MonoBehaviour
     [SerializeField]
     private SpriteRenderer spriteBottom;
 
+    [SerializeField]
+    private GameObject playerDetector;
+
 
     private int currentWaypoint;
     private Vector3 lastPosition;
@@ -73,7 +76,7 @@ public class enemyMovement : MonoBehaviour
                 LookAround();
                 if (!rotationHasReset)
                 {
-                    //transform.rotation = Quaternion.Euler(0, 0, 0);
+                    playerDetector.transform.rotation = Quaternion.Euler(0, 0, 0);
                     rotationHasReset = true;
                 }
 
@@ -135,10 +138,10 @@ public class enemyMovement : MonoBehaviour
     private void LookForPlayer()
     {
 
-        // if it works...
+        // if it works...(yes i know this code sucks, but i was tired and running low on time)
         if (rotation.x > 0 && rotation.x > rotation.y)
         {
-            //transform.rotation = Quaternion.Euler(0, 0, 0);
+            playerDetector.transform.rotation = Quaternion.Euler(0, 0, 0);
             spriteBottom.enabled = false;
             spriteLeft.enabled = false;
             spriteRight.enabled = true;
@@ -146,7 +149,7 @@ public class enemyMovement : MonoBehaviour
         }
         if (rotation.y > 0 && rotation.y > rotation.x)
         {
-            //transform.rotation = Quaternion.Euler(0, 0, 90);
+            playerDetector.transform.rotation = Quaternion.Euler(0, 0, 270);
             spriteBottom.enabled = true;
             spriteLeft.enabled = false;
             spriteRight.enabled = false;
@@ -154,7 +157,7 @@ public class enemyMovement : MonoBehaviour
         }
         if (rotation.x < 0 && -rotation.x > rotation.y)
         {
-            //transform.rotation = Quaternion.Euler(0, 0, 180);
+            playerDetector.transform.rotation = Quaternion.Euler(0, 0, 90);
             spriteBottom.enabled = false;
             spriteLeft.enabled = false;
             spriteRight.enabled = false;
@@ -162,7 +165,7 @@ public class enemyMovement : MonoBehaviour
         }
         if (rotation.y < 0 && -rotation.y > rotation.x)
         {
-            //transform.rotation = Quaternion.Euler(0, 0, 270);
+            playerDetector.transform.rotation = Quaternion.Euler(0, 0, 180);
             spriteBottom.enabled = false;
             spriteLeft.enabled = true;
             spriteRight.enabled = false;
@@ -175,7 +178,7 @@ public class enemyMovement : MonoBehaviour
     {
         if (turnCounter == 0)
         {
-            //transform.rotation = Quaternion.Euler(0, 0, 0);
+            playerDetector.transform.rotation = Quaternion.Euler(0, 0, 0);
             spriteBottom.enabled = false;
             spriteLeft.enabled = false;
             spriteRight.enabled = true;
@@ -183,7 +186,7 @@ public class enemyMovement : MonoBehaviour
         }
         if (turnCounter == 1)
         {
-            //transform.rotation = Quaternion.Euler(0, 0, 90);
+            playerDetector.transform.rotation = Quaternion.Euler(0, 0, 270);
             spriteBottom.enabled = true;
             spriteLeft.enabled = false;
             spriteRight.enabled = false;
@@ -191,7 +194,7 @@ public class enemyMovement : MonoBehaviour
         }
         if (turnCounter == 2)
         {
-            //transform.rotation = Quaternion.Euler(0, 0, 180);
+            playerDetector.transform.rotation = Quaternion.Euler(0, 0, 90);
             spriteBottom.enabled = false;
             spriteLeft.enabled = false;
             spriteRight.enabled = false;
@@ -199,7 +202,7 @@ public class enemyMovement : MonoBehaviour
         }
         if (turnCounter == 3)
         {
-            //transform.rotation = Quaternion.Euler(0, 0, 270);
+            playerDetector.transform.rotation = Quaternion.Euler(0, 0, 180);
             spriteBottom.enabled = false;
             spriteLeft.enabled = true;
             spriteRight.enabled = false;
