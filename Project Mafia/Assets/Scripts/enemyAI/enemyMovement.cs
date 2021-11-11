@@ -176,37 +176,40 @@ public class enemyMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (turnCounter == 0)
+        if (Turn)
         {
-            playerDetector.transform.rotation = Quaternion.Euler(0, 0, 0);
-            spriteBottom.enabled = false;
-            spriteLeft.enabled = false;
-            spriteRight.enabled = true;
-            spriteUp.enabled = false;
-        }
-        if (turnCounter == 1)
-        {
-            playerDetector.transform.rotation = Quaternion.Euler(0, 0, 270);
-            spriteBottom.enabled = true;
-            spriteLeft.enabled = false;
-            spriteRight.enabled = false;
-            spriteUp.enabled = false;
-        }
-        if (turnCounter == 2)
-        {
-            playerDetector.transform.rotation = Quaternion.Euler(0, 0, 90);
-            spriteBottom.enabled = false;
-            spriteLeft.enabled = false;
-            spriteRight.enabled = false;
-            spriteUp.enabled = true;
-        }
-        if (turnCounter == 3)
-        {
-            playerDetector.transform.rotation = Quaternion.Euler(0, 0, 180);
-            spriteBottom.enabled = false;
-            spriteLeft.enabled = true;
-            spriteRight.enabled = false;
-            spriteUp.enabled = false;
+            if (turnCounter == 0)
+            {
+                playerDetector.transform.rotation = Quaternion.Euler(0, 0, 0);
+                spriteBottom.enabled = false;
+                spriteLeft.enabled = false;
+                spriteRight.enabled = true;
+                spriteUp.enabled = false;
+            }
+            if (turnCounter == 1)
+            {
+                playerDetector.transform.rotation = Quaternion.Euler(0, 0, 270);
+                spriteBottom.enabled = true;
+                spriteLeft.enabled = false;
+                spriteRight.enabled = false;
+                spriteUp.enabled = false;
+            }
+            if (turnCounter == 2)
+            {
+                playerDetector.transform.rotation = Quaternion.Euler(0, 0, 90);
+                spriteBottom.enabled = false;
+                spriteLeft.enabled = false;
+                spriteRight.enabled = false;
+                spriteUp.enabled = true;
+            }
+            if (turnCounter == 3)
+            {
+                playerDetector.transform.rotation = Quaternion.Euler(0, 0, 180);
+                spriteBottom.enabled = false;
+                spriteLeft.enabled = true;
+                spriteRight.enabled = false;
+                spriteUp.enabled = false;
+            }
         }
     }
 

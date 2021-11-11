@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -69,6 +70,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
         Timers();
         // Initialize player input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -314,15 +320,20 @@ public class PlayerController : MonoBehaviour
                 iFrameTimer = 0.1f;
                 health -= 50;
                 state = PlayerState.hurt;
-            }
-            if (collision.gameObject.tag == "EnemyProjectile")
-            {
-                iFrameTimer = 0.1f;
-                health -= 20;
-                state = PlayerState.hurt;
-            }
+            }   
         }
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyProjectile")
+        {
+            Debug.Log("Deez");
+            Destroy(collision.gameObject);
+            iFrameTimer = 0.1f;
+            health -= 20;
+            state = PlayerState.hurt;
+        }
     }
 
 

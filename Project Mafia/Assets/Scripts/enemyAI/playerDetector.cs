@@ -17,6 +17,7 @@ public class playerDetector : MonoBehaviour
         } else
         {
             playerInRange = false;
+
         }
     }
 

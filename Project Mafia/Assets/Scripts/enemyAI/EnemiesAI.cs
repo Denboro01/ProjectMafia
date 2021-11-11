@@ -59,11 +59,9 @@ public class EnemiesAI : MonoBehaviour
     private void VisibilityCheck()
     {
 
-
         RaycastHit2D hit = Physics2D.Linecast(transform.position, player.transform.position, wallLayerMask);
         if (hit.collider == null)
         {
-
             playerSeen = true;
             startPathing = false;
             forgetPlayerTimer = 2;
